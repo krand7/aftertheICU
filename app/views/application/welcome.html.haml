@@ -1,9 +1,40 @@
-.content-header.header-lg
+.content-header.header-lg{ style: 'padding-bottom: 150px; position: relative' }
   .container
     .row
       .col-md-7
         %h1 Helping patients and their families navigate the road to recovery from critical illness
+        = image_tag 'home_path2.png', class: 'hidden-xs hidden-sm', style: 'position: absolute; right: 160px;'
       .col-md-5
+        - @user = User.new
+        = form_for(@user, url: registration_path(@user), html: { class: 'form-vertical sign-up-form', autocomplete: 'off' }) do |f|
+          - if @user.errors.any?
+            .bs-callout.bs-callout-danger
+              %p
+                = pluralize(@user.errors.count, "error")
+                prohibited this step from being saved
+              %ul
+                - @user.errors.full_messages.each do |msg|
+                  %li= msg
+          .form-group
+            .row
+              .col-md-6
+                = f.label :first_name, class: 'control-label f400'
+                = f.text_field :first_name, class: 'form-control'
+              .col-md-6
+                = f.label :last_name, class: 'control-label f400'
+                = f.text_field :last_name, class: 'form-control'
+          .form-group
+            = f.label :email, class: 'control-label f400'
+            = f.email_field :email, class: 'form-control'
+          .form-group
+            = f.label :password, class: 'control-label f400'
+            = f.password_field :password, class: 'form-control', autocomplete: 'off'
+          .form-group
+            = f.label :password_confirmation, class: 'control-label f400'
+            = f.password_field :password_confirmation, class: 'form-control', autocomplete: 'off'
+          .form-group.centered
+            = f.submit "Create an Account", class: 'btn btn-danger btn-lg'
+
 
 .container
   .content-container

@@ -157,7 +157,7 @@ $font-family-sans-serif:  'Open Sans', sans-serif; // $font-family-sans-serif:  
 
 $btn-primary-color:              #fff;
 $btn-primary-bg:                 darken($brand-primary, 8%);
-$btn-primary-border:             darken($brand-primary, 5%);
+$btn-primary-border:             darken($btn-primary-bg, 5%);
 
 // $btn-success-color:              #fff
 // $btn-success-bg:                 $brand-success
@@ -172,8 +172,8 @@ $btn-primary-border:             darken($brand-primary, 5%);
 // $btn-warning-border:             darken($btn-warning-bg, 5%)
 
 // $btn-danger-color:               #fff
-// $btn-danger-bg:                  $brand-danger
-// $btn-danger-border:              darken($btn-danger-bg, 5%)
+$btn-danger-bg:                  $brand-secondary;
+$btn-danger-border:              darken($btn-danger-bg, 5%);
 
 // $btn-link-disabled-color:        $gray-light
 
