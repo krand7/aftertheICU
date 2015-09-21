@@ -1,7 +1,7 @@
 json.version do
-  json.string PatstrialOrg::VERSION::STRING
-  json.major PatstrialOrg::VERSION::MAJOR
-  json.minor PatstrialOrg::VERSION::MINOR
-  json.tiny PatstrialOrg::VERSION::TINY
-  json.build PatstrialOrg::VERSION::BUILD
+  json.string AftertheICU::VERSION::STRING
+  json.major AftertheICU::VERSION::MAJOR
+  json.minor AftertheICU::VERSION::MINOR
+  json.tiny AftertheICU::VERSION::TINY
+  json.build AftertheICU::VERSION::BUILD
 end

@@ -1,4 +1,4 @@
-module PatstrialOrg
+module AftertheICU
   module VERSION #:nodoc:
     MAJOR = 1
     MINOR = 0

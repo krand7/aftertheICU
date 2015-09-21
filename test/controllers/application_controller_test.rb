@@ -25,11 +25,11 @@ class ApplicationControllerTest < ActionController::TestCase
   test "should get version as json" do
     get :version, format: 'json'
     version = JSON.parse(response.body)
-    assert_equal PatstrialOrg::VERSION::STRING, version['version']['string']
-    assert_equal PatstrialOrg::VERSION::MAJOR, version['version']['major']
-    assert_equal PatstrialOrg::VERSION::MINOR, version['version']['minor']
-    assert_equal PatstrialOrg::VERSION::TINY, version['version']['tiny']
-    assert_equal PatstrialOrg::VERSION::BUILD, version['version']['build']
+    assert_equal AftertheICU::VERSION::STRING, version['version']['string']
+    assert_equal AftertheICU::VERSION::MAJOR, version['version']['major']
+    assert_equal AftertheICU::VERSION::MINOR, version['version']['minor']
+    assert_equal AftertheICU::VERSION::TINY, version['version']['tiny']
+    assert_equal AftertheICU::VERSION::BUILD, version['version']['build']
     assert_response :success
   end
 end
