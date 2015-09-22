@@ -7,7 +7,9 @@ gem 'pg',                   '0.18.3'
 
 # Gems used by project
 gem 'devise',               '~> 3.5.2'
-gem 'carrierwave',          '~> 0.10.0'
+gem 'carrierwave',          '~> 0.10.0'           # File Uploads
+gem 'mini_magick'                                 # Image Resizing
+gem 'redcarpet',            '~> 3.3.2'            # Markdown on forums
 gem 'kaminari',             '~> 0.16.3'
 gem 'figaro',               '~> 1.1.1'
 gem 'bootstrap-sass',       '~> 3.3.5'

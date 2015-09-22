@@ -19,6 +19,10 @@ class PostsController < ApplicationController
     @post = @topic.posts.new
   end
 
+  def preview
+    @post = @topic.posts.new(post_params) unless @post.present?
+  end
+
   # GET /posts/1/edit
   def edit
   end
@@ -30,8 +34,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to [@forum, @topic, @post], notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: [@forum, @topic, @post] }
+        format.html { redirect_to [@forum, @topic], notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: [@forum, @topic] }
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -79,6 +83,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
+      params[:post] ||= { blank: '1' }
       params.require(:post).permit(:description, :status, :links_enabled)
     end
 end

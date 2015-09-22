@@ -1,3 +1,34 @@
-%p#notice= notice
+%h1= @topic.name
 = link_to 'Edit', edit_forum_topic_path(@forum, @topic)
-#{link_to 'Back', forum_topics_path(@forum)}
+= link_to 'Back', forum_path(@forum)
+
+%ul
+  - @topic.posts.each do |post|
+    %li= post.description
+
+- @post = @topic.posts.new
+= form_for [@forum, @topic, @post], html: { class: 'form-horizontal' } do |f|
+  - if @post.errors.any?
+    #error_explanation.bs-callout.bs-callout-danger
+      %h4
+        = pluralize(@post.errors.count, "error")
+        prohibited this comment from being saved
+      %ul
+      - @post.errors.full_messages.each do |msg|
+        %li= msg
+  .new-post-container
+    %ul.nav.nav-tabs
+      %li.active
+        %a{ href: '#write-new', data: { toggle: 'tab' } }
+          Write
+      %li
+        %a{ href: '#preview-new', data: { toggle: 'tab', forum_id: "#{@forum.to_param}", topic_id: "#{@topic.to_param}", object: 'preview-post', post_id: 'new' } }
+          Preview
+
+    .tab-content
+      #write-new.tab-pane.active
+        = f.text_area :description, rows: 7, class: 'form-control'
+      #preview-new.tab-pane{ style: 'min-height:177px;' }
+        #preview-new.post-container
+
+    = f.submit "Comment", class: 'btn btn-primary', data: { disable_with: "Posting comment..." }

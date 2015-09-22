@@ -1,14 +1,20 @@
 %p#notice= notice
-%h1 Listing Forums
-%table
-  %thead
-    %tr
-      %th{:colspan => "3"}
-  %tbody
-    - @forums.each do |forum|
+%h1 Forums
+- @forums.each do |forum|
+  %h2= link_to "#{forum.name}", forum
+  %table.table.table-striped
+    %thead
       %tr
-        %td= link_to 'Show', forum
-        %td= link_to 'Edit', edit_forum_path(forum)
-        %td= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Forum', new_forum_path
+        %th Topic
+        %th Posts
+        %th Last Post By
+        %th Time
+    %tbody
+      - forum.topics.limit(10).each do |topic|
+        %tr
+          %td= link_to "#{topic.name}", [forum, topic]
+          %td= topic.posts.count
+          %td= topic.posts.last.user.first_name if topic.posts.present? and topic.posts.last.user.present?
+          %td= topic.posts.last.created_at if topic.posts.present?
+- if current_user and current_user.system_admin?
+  = link_to 'New Forum', new_forum_path

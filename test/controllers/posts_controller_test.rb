@@ -25,7 +25,7 @@ class PostsControllerTest < ActionController::TestCase
       post :create, forum_id: @forum, topic_id: @topic, post: { description: 'hello' }
     end
 
-    assert_redirected_to forum_topic_post_path(@forum, @topic, assigns(:post))
+    assert_redirected_to forum_topic_path(@forum, @topic)
   end
 
   test "should show post" do
@@ -44,7 +44,7 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should destroy post" do
-    assert_difference('Post.count', -1) do
+    assert_difference('Post.current.count', -1) do
       delete :destroy, forum_id: @forum, topic_id: @topic, id: @post
     end
 

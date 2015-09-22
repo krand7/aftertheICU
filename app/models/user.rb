@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
   # Concerns
   include Deletable
 
+  # Model Relationships
+  has_many :forums
+  has_many :topics
+  has_many :posts
+
   # Model Validation
   validates_presence_of :first_name, :last_name
 

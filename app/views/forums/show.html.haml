@@ -1,4 +1,21 @@
 %p#notice= notice
-= link_to 'Edit', edit_forum_path(@forum)
 
-#{link_to 'Back', forums_path}
+%h1= @forum.name
+= link_to 'Edit', edit_forum_path(@forum)
+= link_to 'Back', forums_path
+%table.table.table-striped
+  %thead
+    %tr
+      %th Topic
+      %th Posts
+      %th Last Post By
+      %th Time
+  %tbody
+    - @forum.topics.each do |topic|
+      %tr
+        %td= link_to "#{topic.name}", [@forum, topic]
+        %td= topic.posts.count
+        %td= topic.posts.last.user.first_name if topic.posts.present? and topic.posts.last.user.present?
+        %td= topic.posts.last.created_at if topic.posts.present?
+%br/
+= link_to 'New Topic', new_forum_topic_path(@forum)

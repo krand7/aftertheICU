@@ -42,7 +42,7 @@ class TopicsControllerTest < ActionController::TestCase
   end
 
   test "should destroy topic" do
-    assert_difference('Topic.count', -1) do
+    assert_difference('Topic.current.count', -1) do
       delete :destroy, forum_id: @forum, id: @topic
     end
 

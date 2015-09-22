@@ -11,6 +11,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @topic.increase_view_count
   end
 
   # GET /topics/new
