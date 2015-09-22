@@ -27,4 +27,4 @@
       = f.check_box :locked
       = f.label :locked
   .form-group
-    = f.submit 'Create Topic', class: 'btn btn-primary'
+    = f.submit "#{@topic.new_record? ? 'Create Topic' : 'Save Changes'}", class: 'btn btn-primary'

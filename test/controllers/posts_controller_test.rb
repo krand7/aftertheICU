@@ -9,10 +9,9 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should get index" do
     get :index, forum_id: @forum, topic_id: @topic
-    assert_response :success
+    assert_redirected_to [@forum, @topic]
     assert_not_nil assigns(:forum)
     assert_not_nil assigns(:topic)
-    assert_not_nil assigns(:posts)
   end
 
   test "should get new" do
@@ -30,7 +29,7 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should show post" do
     get :show, forum_id: @forum, topic_id: @topic, id: @post
-    assert_response :success
+    assert_redirected_to [@forum, @topic]
   end
 
   test "should get edit" do

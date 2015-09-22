@@ -1,5 +1,4 @@
 %h1 Editing Post
 = render 'form'
-= link_to 'Show', [@forum, @topic, @post]
 
-#{link_to 'Back', forum_topic_posts_path(@forum, @topic)}
+= link_to 'Back', forum_topic_posts_path(@forum, @topic), class: 'btn btn-default'

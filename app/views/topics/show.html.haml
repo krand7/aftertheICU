@@ -1,6 +1,7 @@
 %h1= @topic.name
-= link_to 'Edit', edit_forum_topic_path(@forum, @topic)
-= link_to 'Back', forum_path(@forum)
+- if current_user and current_user.system_admin?
+  = link_to 'Edit', edit_forum_topic_path(@forum, @topic), class: 'btn btn-default btn-sm'
+= link_to 'Back', forum_path(@forum), class: 'btn btn-default btn-sm'
 
 %ul
   - @topic.posts.each do |post|
