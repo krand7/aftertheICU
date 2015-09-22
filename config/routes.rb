@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :forums do
+    resources :topics do
+      resources :posts
+    end
+  end
   scope module: 'application' do
     get :dashboard
     get :version
