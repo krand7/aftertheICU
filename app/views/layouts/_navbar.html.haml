@@ -1,0 +1,21 @@
+%nav.navbar.navbar-static-top
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to "After the ICU", current_user ? dashboard_path : welcome_path, class: 'navbar-brand'
+    %ul.nav.navbar-nav.navbar-right
+      - unless current_user
+        %li
+          = link_to 'Sign In', new_session_path(User)
+        %li
+          = link_to 'Sign Up', new_registration_path(User)
+    #navbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          = link_to "#{current_user ? 'Dashboard' : 'Home'}", current_user ? dashboard_path : welcome_path
+        %li
+          = link_to "Forums", forums_path

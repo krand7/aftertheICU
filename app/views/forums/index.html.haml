@@ -21,5 +21,5 @@
           %td= topic.posts.count
           %td= topic.posts.last.user.first_name if topic.posts.present? and topic.posts.last.user.present?
           %td= topic.posts.last.created_at.strftime("%-d %B %Y, %-l:%M %p") if topic.posts.present?
-- if current_user and current_user.system_admin?
+- if current_user and current_user.admin?
   = link_to 'New Forum', new_forum_path, class: 'btn btn-primary'

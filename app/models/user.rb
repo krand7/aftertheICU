@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name
 
   # User Methods
+  def admin?
+    self.system_admin?
+  end
 
   # Overriding Devise built-in active_for_authentication? method
   def active_for_authentication?

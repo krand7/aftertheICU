@@ -11,6 +11,18 @@ regular:
   email: regular@example.com
   encrypted_password: ""
 
+forum:
+  first_name: Forum
+  last_name: User
+  email: forum@example.com
+  encrypted_password: ""
+
+new:
+  first_name: New
+  last_name: User
+  email: new@example.com
+  encrypted_password: ""
+
 deleted:
   first_name: Deleted
   last_name: User

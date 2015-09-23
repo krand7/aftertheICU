@@ -7,7 +7,7 @@
 one:
   name: New topic
   forum_id: 1
-  user_id: 1
+  user: forum
 
 two: {}
 #  column: value

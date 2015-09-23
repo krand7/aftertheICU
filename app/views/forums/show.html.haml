@@ -1,7 +1,8 @@
 %p#notice= notice
 
 %h1= @forum.name
-= link_to 'Edit', edit_forum_path(@forum), class: 'btn btn-default btn-sm'
+- if current_user and current_user.admin?
+  = link_to 'Edit', edit_forum_path(@forum), class: 'btn btn-default btn-sm'
 = link_to 'Back', forums_path, class: 'btn btn-default btn-sm'
 %table.table.table-striped
   %thead
@@ -17,5 +18,5 @@
         %td= topic.posts.count
         %td= topic.posts.last.user.first_name if topic.posts.present? and topic.posts.last.user.present?
         %td= topic.posts.last.created_at.strftime("%-d %B %Y, %-l:%M %p") if topic.posts.present?
-%br
-= link_to 'New Topic', new_forum_topic_path(@forum), class: 'btn btn-primary'
+- if current_user
+  = link_to 'New Topic', new_forum_topic_path(@forum), class: 'btn btn-primary'
