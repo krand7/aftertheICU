@@ -3,9 +3,19 @@
   = link_to 'Edit', edit_forum_topic_path(@forum, @topic), class: 'btn btn-default btn-sm'
 = link_to 'Back', forum_path(@forum), class: 'btn btn-default btn-sm'
 
-%ul
+.topic-posts-container
   - @topic.posts.each do |post|
-    %li= post.description
+    .topic-post-container
+      .post
+        .post-header
+          %h4.poster-details
+            %span.f500
+              = post.user.first_name.present? ? post.user.first_name : 'Anonymous'
+            = post.is_first_post? ? "started the topic" : "replied"
+          %p.small.post-time
+            = post.created_at.strftime("%-d %B %Y, %-l:%M %p")
+        .post-content
+          = render 'posts/formatted', post: post
 
 - @post = @topic.posts.new
 = form_for [@forum, @topic, @post], html: { class: 'form-horizontal' } do |f|

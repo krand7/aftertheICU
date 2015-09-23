@@ -16,6 +16,6 @@
         %td= link_to "#{topic.name}", [@forum, topic]
         %td= topic.posts.count
         %td= topic.posts.last.user.first_name if topic.posts.present? and topic.posts.last.user.present?
-        %td= topic.posts.last.created_at if topic.posts.present?
+        %td= topic.posts.last.created_at.strftime("%-d %B %Y, %-l:%M %p") if topic.posts.present?
 %br
 = link_to 'New Topic', new_forum_topic_path(@forum), class: 'btn btn-primary'

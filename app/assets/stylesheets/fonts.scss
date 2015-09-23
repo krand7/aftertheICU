@@ -22,3 +22,11 @@
   src: asset-url('opensans/OpenSans-Bold.woff') format('woff'),
        asset-url('opensans/OpenSans-Bold.ttf') format('truetype');
 }
+
+.f500 {
+  font-weight: 500;
+}
+
+.f400 {
+  font-weight: 400;
+}
