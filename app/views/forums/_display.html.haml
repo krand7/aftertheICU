@@ -1,0 +1,18 @@
+%table.table.table-striped
+  %col
+  %col{ width: "70px" }
+  %col{ width: "150px" }
+  %col{ width: "220px" }
+  %thead
+    %tr
+      %th Topic
+      %th Posts
+      %th Last Post By
+      %th Time
+  %tbody
+    - forum.topics.limit(topic_limit).each do |topic|
+      %tr
+        %td= link_to "#{topic.name}", [forum, topic]
+        %td= topic.posts.count
+        %td= topic.posts.last.user.forum_name if topic.posts.present? and topic.posts.last.user.present?
+        %td= topic.posts.last.created_at.strftime("%-d %B %Y, %-l:%M %p") if topic.posts.present?

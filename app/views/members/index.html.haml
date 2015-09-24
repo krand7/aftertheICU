@@ -1,0 +1,20 @@
+%h1 Members
+
+%table.table.table-striped
+  %col
+  %col{ width: "70px" }
+  %col{ width: "70px" }
+  %col{ width: "150px" }
+  %thead
+    %tr
+      %th Name
+      %th Posts
+      %th Topics
+      %th Joined
+  %tbody
+    - @members.each do |member|
+      %tr
+        %td= link_to member.forum_name, member_path(member.forum_name)
+        %td= member.posts.count
+        %td= member.topics.count
+        %td= member.created_at.strftime("%-d %B %Y")

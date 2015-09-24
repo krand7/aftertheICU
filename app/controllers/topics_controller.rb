@@ -18,7 +18,7 @@ class TopicsController < ApplicationController
 
   # GET /topics/new
   def new
-    @topic = @forum.topics.new
+    @topic = current_user.topics.where(forum_id: @forum).new
   end
 
   # GET /topics/1/edit
@@ -28,7 +28,7 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.json
   def create
-    @topic = @forum.topics.new(topic_params)
+    @topic = current_user.topics.where(forum_id: @forum).new(topic_params)
 
     respond_to do |format|
       if @topic.save

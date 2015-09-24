@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   # Concerns
   include Deletable
 
+  # Uploaders
+  mount_uploader :photo, PhotoUploader
+
   # Model Relationships
   has_many :forums
   has_many :topics
@@ -14,10 +17,27 @@ class User < ActiveRecord::Base
 
   # Model Validation
   validates_presence_of :first_name, :last_name
+  validates :forum_name, allow_blank: false, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/i }
 
   # User Methods
   def admin?
     self.system_admin?
+  end
+
+  def points
+    posts.current.count * ENV['pp_post'].to_i + topics.current.count * ENV['pp_topic'].to_i
+  end
+
+  def photo_url
+    if photo.present?
+      photo.url
+    else
+      'default-user.jpg'
+    end
+  end
+
+  def full_name
+    first_name + last_name
   end
 
   # Overriding Devise built-in active_for_authentication? method

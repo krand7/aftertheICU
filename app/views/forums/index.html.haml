@@ -2,24 +2,6 @@
 %h1 Forums
 - @forums.each do |forum|
   %h2= link_to "#{forum.name}", forum
-  %table.table.table-striped
-    / %col{ width: "50px" }
-    %col
-    %col{ width: "70px" }
-    %col{ width: "150px" }
-    %col{ width: "220px" }
-    %thead
-      %tr
-        %th Topic
-        %th Posts
-        %th Last Post By
-        %th Time
-    %tbody
-      - forum.topics.limit(10).each do |topic|
-        %tr
-          %td= link_to "#{topic.name}", [forum, topic]
-          %td= topic.posts.count
-          %td= topic.posts.last.user.first_name if topic.posts.present? and topic.posts.last.user.present?
-          %td= topic.posts.last.created_at.strftime("%-d %B %Y, %-l:%M %p") if topic.posts.present?
+  = render 'forums/display', forum: forum, topic_limit: 10
 - if current_user and current_user.admin?
   = link_to 'New Forum', new_forum_path, class: 'btn btn-primary'

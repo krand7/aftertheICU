@@ -1,0 +1,7 @@
+%h1= @member.forum_name
+
+%p= "#{@member.forum_name} has #{@member.points} points"
+
+%ul
+  %li= pluralize(@member.posts.count, 'post')
+  %li= pluralize(@member.topics.count, 'topic')

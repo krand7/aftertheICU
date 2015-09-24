@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'members', to: 'members#index'
+  get 'members/:forum_name', to: 'members#show', as: 'member'
+  get 'leaderboards', to: 'members#leaderboards'
+  get 'settings', to: 'account#settings'
+  patch 'settings', to: 'account#update', as: 'update_settings'
+
   resources :forums do
     resources :topics do
       resources :posts do
@@ -15,7 +21,7 @@ Rails.application.routes.draw do
     get :welcome
   end
 
-  devise_for :users, path_names: { sign_up: 'join', sign_in: 'login', sign_out: 'logout' }, path: ""
+  devise_for :users, controllers: { registrations: 'registrations' }, path_names: { sign_up: 'join', sign_in: 'login', sign_out: 'logout' }, path: "/"
 
   root to: 'application#welcome'
 

@@ -19,11 +19,11 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = @topic.posts.new
+    @post = current_user.posts.where(topic_id: @topic).new
   end
 
   def preview
-    @post = @topic.posts.new(post_params) unless @post.present?
+    @post = current_user.posts.where(topic_id: @topic).new(post_params) unless @post.present?
   end
 
   # GET /posts/1/edit
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = @topic.posts.new(post_params)
+    @post = current_user.posts.where(topic_id: @topic).new(post_params)
 
     respond_to do |format|
       if @post.save

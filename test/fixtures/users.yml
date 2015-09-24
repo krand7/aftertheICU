@@ -4,24 +4,35 @@ system_admin:
   email: system_admin@example.com
   encrypted_password: ""
   system_admin: true
+  forum_name: adminuser
 
 regular:
   first_name: Regular
   last_name: User
   email: regular@example.com
   encrypted_password: ""
+  forum_name: regularuser
 
 forum:
   first_name: Forum
   last_name: User
   email: forum@example.com
   encrypted_password: ""
+  forum_name: forumuser
+
+social:
+  first_name: Social
+  last_name: User
+  email: social@example.com
+  encrypted_password: ""
+  forum_name: socialuser
 
 new:
   first_name: New
   last_name: User
   email: new@example.com
   encrypted_password: ""
+  forum_name: newuser
 
 deleted:
   first_name: Deleted
@@ -29,3 +40,4 @@ deleted:
   email: deleted@example.com
   encrypted_password: ""
   deleted: true
+  forum_name: deleteduser

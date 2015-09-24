@@ -6,11 +6,13 @@
 .topic-posts-container
   - @topic.posts.each do |post|
     .topic-post-container
+      .poster-image
+        = render 'account/user_image_link', user: post.user, size: 50
       .post
         .post-header
           %h4.poster-details
             %span.f500
-              = post.user.first_name.present? ? post.user.first_name : 'Anonymous'
+              = post.user.forum_name.present? ? post.user.forum_name : 'Anonymous'
             = post.is_first_post? ? "started the topic" : "replied"
           %p.small.post-time
             = post.created_at.strftime("%-d %B %Y, %-l:%M %p")
