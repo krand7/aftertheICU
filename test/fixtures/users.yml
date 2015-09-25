@@ -27,6 +27,20 @@ social:
   encrypted_password: ""
   forum_name: socialuser
 
+research:
+  first_name: Research
+  last_name: User
+  email: research@example.com
+  encrypted_password: ""
+  forum_name: researchuser
+
+voter:
+  first_name: Voting
+  last_name: User
+  email: voter@example.com
+  encrypted_password: ""
+  forum_name: voteruser
+
 new:
   first_name: New
   last_name: User

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: research
+  research_topic: one
+  rating: 1
+
+two:
+  user: voter
+  research_topic: one
+  rating: 0

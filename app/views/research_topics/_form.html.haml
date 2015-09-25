@@ -1,0 +1,24 @@
+= form_for(@research_topic) do |f|
+  - if @research_topic.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@research_topic.errors.count, "error")
+        prohibited this research_topic from being saved:
+      %ul
+        - @research_topic.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :name, nil, class: 'control-label'
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :slug, nil, class: 'control-label'
+    = f.text_field :slug, class: 'form-control'
+  .form-group
+    = f.label :description, nil, class: 'control-label'
+    = f.text_field :description, class: 'form-control'
+  - if current_user.admin?
+    .form-group
+      = f.label :progress, nil, class: 'control-label'
+      = f.select :progress, [['---', nil]] + ResearchTopic::STATUS, {}, class: 'form-control'
+  .form-group
+    = f.submit 'Submit for Approval', class: 'btn btn-primary'

@@ -1,0 +1,18 @@
+= form_for([@research_topic, @comment]) do |f|
+  - if @comment.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@comment.errors.count, "error")
+        prohibited this comment from being saved:
+      %ul
+        - @comment.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :description, nil, class: 'control-label'
+    = f.text_area :description, class: 'form-control'
+  - if current_user.admin?
+    .form-group
+      = f.label :status, nil, class: 'control-label'
+      = f.select :status, [['---', nil]] + Comment::STATUS, {}, class: 'form-control'
+  .form-group
+    = f.submit 'Save Changes', class: 'btn btn-primary'

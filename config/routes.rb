@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :research_topics do
+    resources :comments
+    resources :votes
+  end
   get 'members', to: 'members#index'
   get 'members/:forum_name', to: 'members#show', as: 'member'
   get 'leaderboards', to: 'members#leaderboards'

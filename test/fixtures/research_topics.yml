@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Research Topic One
+  description: This is a research topic
+  slug: research-topic-one
+  user: research
+  progress: approved
+
+two:
+  name: Research Topic Two
+  description: This is another research topic
+  slug: research-topic-two
+  user: research

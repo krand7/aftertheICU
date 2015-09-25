@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   has_many :forums
   has_many :topics
   has_many :posts
+  has_many :research_topics
+  has_many :comments
+  has_many :votes
 
   # Model Validation
   validates_presence_of :first_name, :last_name
