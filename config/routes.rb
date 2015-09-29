@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :surveys
   resources :research_topics do
     resources :comments
     resources :votes

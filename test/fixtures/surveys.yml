@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+about_me:
+  name: About Me
+  description: A generic survey
+  status: show
+  slug: about-me
+  user: survey_builder
+
+# two:
+#   name: MyString
+#   description: MyString
+#   status: MyString
+#   slug: MyString
+#   user_id: 1
+#   deleted: false
+#   pediatric: false
+#   child_min_age: 1
+#   child_max_age: 1

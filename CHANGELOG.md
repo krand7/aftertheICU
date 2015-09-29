@@ -3,3 +3,4 @@
 - Skeleton files to initialize Rails application with testing framework and continuous integration
 - Functional forum template
 - Functional research topic template
+- Survey model built

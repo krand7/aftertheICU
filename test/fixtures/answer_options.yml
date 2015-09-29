@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+good:
+  text: Good
+  value: 1
+  hotkey: A
+  user: survey_builder
+
+bad:
+  text: Bad
+  value: 2
+  hotkey: B
+  user: survey_builder

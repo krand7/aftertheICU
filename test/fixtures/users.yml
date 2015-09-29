@@ -48,6 +48,19 @@ new:
   encrypted_password: ""
   forum_name: newuser
 
+survey:
+  first_name: Survey
+  last_name: User
+  email: survey@example.com
+  forum_name: surveyuser
+
+survey_builder:
+  first_name: Survey
+  last_name: Builder
+  email: surveybuilder@example.com
+  encrypted_password: ""
+  forum_name: surveybuilder
+
 deleted:
   first_name: Deleted
   last_name: User
