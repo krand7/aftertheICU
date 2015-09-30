@@ -59,6 +59,7 @@ survey_builder:
   last_name: Builder
   email: surveybuilder@example.com
   encrypted_password: ""
+  survey_builder: true
   forum_name: surveybuilder
 
 deleted:

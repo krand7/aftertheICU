@@ -18,10 +18,4 @@ class SurveysController < ApplicationController
     def set_survey
       @survey = Survey.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    # Keeping this for reference in the survey builder
-    def survey_params
-      params.require(:survey).permit(:name, :description, :status, :slug, :user_id, :deleted, :pediatric, :child_min_age, :child_max_age)
-    end
 end

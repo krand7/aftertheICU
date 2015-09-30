@@ -7,13 +7,9 @@ about_me:
   slug: about-me
   user: survey_builder
 
-# two:
-#   name: MyString
-#   description: MyString
-#   status: MyString
-#   slug: MyString
-#   user_id: 1
-#   deleted: false
-#   pediatric: false
-#   child_min_age: 1
-#   child_max_age: 1
+built_on_web:
+  name: Built On Web
+  description: A survey built on the web interface
+  status: show
+  slug: built-on-web
+  user: survey_builder

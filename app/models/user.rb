@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :response_sessions
   has_many :responses
+  has_many :surveys, -> { where deleted: false }
+  has_many :questions, -> { where deleted: false }
+  has_many :answer_templates, -> { where deleted: false }
+  has_many :answer_options, -> { where deleted: false }
 
   # Model Validation
   validates_presence_of :first_name, :last_name
@@ -29,10 +33,12 @@ class User < ActiveRecord::Base
     self.system_admin?
   end
 
+  ## Leaderboard
   def points
     posts.current.count * ENV['pp_post'].to_i + topics.current.count * ENV['pp_topic'].to_i
   end
 
+  ## Settings
   def photo_url
     if photo.present?
       photo.url
@@ -41,8 +47,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  def full_name
-    first_name + last_name
+  def name
+    first_name + ' ' + last_name
+  end
+
+  ## Surveys
+  def editable_surveys
+    Survey.current.where(user_id: self.id)
   end
 
   # Overriding Devise built-in active_for_authentication? method

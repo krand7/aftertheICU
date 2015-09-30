@@ -1,0 +1,52 @@
+- url = @answer_template.new_record? ? builder_question_answer_templates_path(@question) : builder_answer_template_path(@answer_template)
+- method = @answer_template.new_record? ? :post : :patch
+= form_for @answer_template, url: url, method: method, html: { class: 'form-horizontal' } do |f|
+  - if @answer_template.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@answer_template.errors.count, "error")
+        prohibited this answer_template from being saved:
+      %ul
+        - @answer_template.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :name, 'Name*', class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :template_type, 'Type*', class: 'col-md-2 control-label'
+    .col-md-10
+      = f.select :template_type, AnswerTemplate::TYPES, { include_blank: true }, class: 'form-control'
+
+  - if @question.answer_templates.where.not(id: @answer_template.id).count > 0
+    .form-group
+      = f.label :parent_answer_template_id, 'Parent Template', class: 'col-md-2 control-label'
+      .col-md-10
+        = f.select :parent_answer_template_id, @question.answer_templates.where(parent_answer_template_id: nil).where.not(id: @answer_template.id).collect{|at| [at.name_with_options, at.id]}, { include_blank: true }, class: 'form-control'
+        .text-info
+          Select a Parent Template if you wish for this to be shown or hidden conditionally.
+
+    .form-group
+      = f.label :parent_answer_option_value, 'Parent Option Value', class: 'col-md-2 control-label'
+      .col-md-10
+        = f.text_field :parent_answer_option_value, class: 'form-control'
+
+    .form-group
+      = f.label :text, nil, class: 'col-md-2 control-label'
+      .col-md-10
+        = f.text_field :text, class: 'form-control'
+        .text-info
+          This will be the extra information displayed for the conditional question (e.g. 'Please explain')
+
+  .form-group
+    = f.label :unit, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :unit, class: 'form-control'
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      .text-info
+        * Required
+      %br
+      = f.submit "#{@answer_template.new_record? ? 'Create' : 'Save'} Answer Template", class: 'btn btn-primary'

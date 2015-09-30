@@ -1,0 +1,76 @@
+%h1
+  = link_to 'Surveys', builder_surveys_path
+  &middot;
+  = link_to @survey.name, builder_survey_path(@survey)
+  &middot;
+  = link_to @question.slug, builder_question_path(@question)
+  &middot;
+  = @answer_template.name
+
+- if @survey.editable_by?(current_user)
+  = link_to 'Edit Answer Template', edit_builder_answer_template_path(@answer_template), class: 'btn btn-xs btn-default'
+  = link_to 'Delete Answer Template', builder_answer_template_path(@answer_template), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Answer Template #{@answer_template.name}?" }
+= link_to 'Back', builder_question_path(@question)
+
+- @answer_template.name
+
+%br
+%br
+%dl.dl-horizontal
+  %dt
+    %strong Name
+  %dd
+    = @answer_template.name
+
+  %dt
+    %strong Type
+  %dd
+    = @answer_template.template_type
+
+  %dt
+    %strong Parent Template
+  %dd
+    = @answer_template.parent_answer_template.name if @answer_template.parent_answer_template
+
+  %dt
+    %strong Parent Option Value
+  %dd
+    = @answer_template.parent_answer_option_value
+
+  %dt
+    %strong Text
+  %dd
+    = @answer_template.text
+
+  %dt
+    %strong Unit
+  %dd
+    = @answer_template.unit
+
+  - if @answer_template.allows_answer_options?
+    %dt
+      %strong Answer Options
+    %dd
+      %table.table.table-bordered.table-striped
+        %thead
+          %tr
+            %th Text
+            %th Hotkey
+            %th Value
+            %th Display Class
+            %th Creator
+            %th Actions
+        - @answer_template.answer_options.each do |answer_option|
+          %tr
+            %td= answer_option.text
+            %td= answer_option.hotkey
+            %td= answer_option.value
+            %td
+              %code= answer_option.display_class
+            %td= link_to answer_option.user.forum_name, member_path(answer_option.user.forum_name)
+            %td= link_to 'Edit', edit_builder_answer_option_path(answer_option), class: 'btn btn-xs btn-default'
+        %tr
+          %td{ colspan: '6' }
+            = link_to 'Add Another Answer Option', new_builder_answer_template_answer_option_path(@answer_template), class: 'btn btn-xs btn-default'
+
+

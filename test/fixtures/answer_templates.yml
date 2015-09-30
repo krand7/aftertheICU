@@ -3,11 +3,13 @@
 weight:
   name: weight_template
   data_type: numeric_value
-  type: number
+  template_type: number
   user: survey_builder
+  question: weight
 
 how_are_you:
   name: how_are_you_template
   data_type: answer_option_id
-  type: radio
+  template_type: radio
   user: survey_builder
+  question: how_are_you

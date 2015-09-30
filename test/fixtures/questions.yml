@@ -5,10 +5,12 @@ weight:
   display_type: number_input
   slug: what-is-your-weight
   user: survey_builder
+  survey: about_me
 
 how_are_you:
   title: How are you?
   display_type: radio_input
   slug: how-are-you
-  user_id: 1
+  user: survey_builder
   deleted: false
+  survey: about_me

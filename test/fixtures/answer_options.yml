@@ -5,9 +5,11 @@ good:
   value: 1
   hotkey: A
   user: survey_builder
+  answer_template: how_are_you
 
 bad:
   text: Bad
   value: 2
   hotkey: B
   user: survey_builder
+  answer_template: how_are_you

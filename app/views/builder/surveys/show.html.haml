@@ -1,0 +1,65 @@
+%h1
+  = link_to 'Surveys', builder_surveys_path
+  &middot;
+  = @survey.name
+
+- if @survey.editable_by?(current_user)
+  = link_to 'Edit Survey', edit_builder_survey_path(@survey), class: 'btn btn-xs btn-default'
+  = link_to 'Delete Survey', builder_survey_path(@survey), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Are you sure you want to delete Survey #{@survey.name}?" }
+
+.content-container
+  .content-body
+
+    %dl.dl-horizontal
+      %dt
+        %strong Name
+      %dd= @survey.name
+
+      %dt
+        %strong Creator
+      %dd= @survey.user.name if @survey.user
+
+      %dt
+        %strong Slug
+      %dd
+        = @survey.slug
+
+      %dt
+        %strong Status
+      %dd
+        = @survey.status
+
+      %dt
+        %strong Pediatric
+      %dd
+        = simple_check @survey.pediatric?
+
+      - if @survey.pediatric?
+        %dt
+          %strong Child Minimum Age
+        %dd
+          = @survey.child_min_age
+
+        %dt
+          %strong Child Maximum Age
+        %dd
+          = @survey.child_max_age
+
+    %h3 Questions
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Text
+          %th URL Slug
+          %th Creator
+          %th Actions
+      - @survey.questions.each do |question|
+        %tr
+          %td= link_to question.title, builder_question_path(@survey, question)
+          %td
+            %code= question.slug
+          %td= link_to_if current_user.admin?, question.user.name, member_path(question.user.forum_name) if question.user
+          %td= link_to 'Edit', edit_builder_question_path(@survey, question), class: 'btn btn-xs btn-default'
+      %tr
+        %td{ colspan: '4' }
+          = link_to 'Add Another Question', new_builder_survey_question_path(@survey), class: 'btn btn-xs btn-default'

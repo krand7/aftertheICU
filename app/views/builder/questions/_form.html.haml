@@ -1,0 +1,30 @@
+- url = @question.new_record? ? builder_survey_questions_path(@survey) : builder_question_path(@question)
+- method = @question.new_record? ? :post : :patch
+= form_for @question, url: url, method: method, html: { class: 'form-horizontal' } do |f|
+  - if @question.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@question.errors.count, "error")
+        prohibited this builder_question from being saved:
+
+      %ul
+        - @question.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.label :title, 'Text', class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :title, class: 'form-control'
+
+  .form-group
+    = f.label :slug, 'URL Slug', class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :slug, class: 'form-control'
+      .text-info
+        Please only use lowercase letters, numbers, and dashes.
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      = f.submit "#{@question.new_record? ? 'Create' : 'Save'} Question", class: 'btn btn-primary'
+      = link_to 'Cancel', builder_survey_path(@survey), class: 'btn btn-default'
+

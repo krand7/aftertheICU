@@ -12,9 +12,12 @@
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             = image_tag current_user.photo_url, style: 'height: 30px; width: 30px; border-radius: 3px'
-            = current_user.full_name
+            = current_user.name
             %span.caret
           %ul.dropdown-menu
+            - if current_user.survey_builder?
+              %li
+                = link_to 'Survey Builder', builder_surveys_path
             %li
               = link_to 'Settings', settings_path
             %li

@@ -24,4 +24,7 @@ class Survey < ActiveRecord::Base
   scope :pediatric, -> { where pediatric: true }
 
   # Methods
+  def editable_by?(current_user)
+    self.user_id == current_user.id
+  end
 end
