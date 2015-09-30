@@ -1,0 +1,15 @@
+.col-md-4.team-member-container
+  .centered
+    = image_tag team_member.photo_url, class: 'team-member-img'
+  %h2
+    = team_member.name
+    %span.designations= team_member.designations
+  %h3
+    = team_member.role
+  %p.lead
+    = team_member.bio
+  - if current_user.admin?
+    .admin-bar
+      = link_to edit_admin_team_member_path(team_member) do
+        %span.glyphicon.glyphicon-pencil
+

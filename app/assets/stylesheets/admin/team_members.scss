@@ -1,0 +1,28 @@
+// Place all the styles related to the admin/team_members controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.team-member-container {
+  position: relative;
+  .team-member-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+  }
+  h2 {
+    text-align: center;
+  }
+  span.designations {
+    color: gray;
+  }
+  h3 {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  .admin-bar {
+    position: absolute;
+    top:0;
+    right:0;
+  }
+}

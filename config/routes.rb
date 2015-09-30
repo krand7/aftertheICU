@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get '/', to: :dashboard
+    resources :team_members
+  end
+
   resources :research_topics do
     resources :comments
     resources :votes
@@ -23,6 +28,7 @@ Rails.application.routes.draw do
     get :dashboard
     get :version
     get :welcome
+    get :team
   end
 
   devise_for :users, controllers: { registrations: 'registrations' }, path_names: { sign_up: 'join', sign_in: 'login', sign_out: 'logout' }, path: "/"

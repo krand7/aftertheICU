@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Team Designer
+  designations: MS
+  role: Designer
+  position: 1
+  bio: Team member 1
+
+two:
+  name: Team Developer
+  designations: PhD
+  role: Developer
+  position: 2
+  bio: Team member 2

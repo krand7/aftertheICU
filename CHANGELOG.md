@@ -3,3 +3,5 @@
 - Skeleton files to initialize Rails application with testing framework and continuous integration
 - Functional forum template
 - Functional research topic template
+- Added admin dashboard
+  - Ability to create team members for static page
