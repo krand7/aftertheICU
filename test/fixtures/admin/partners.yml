@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Partner One
+  description: This is our first partner
+  position: 1
+
+two:
+  name: Partner Two
+  description: This is our second partner
+  position: 2

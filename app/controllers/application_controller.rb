@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     @team_members = Admin::TeamMember.order('position')
   end
 
+  def partners
+    @partners = Admin::Partner.order('position')
+  end
+
   protected
 
     def configure_permitted_parameters

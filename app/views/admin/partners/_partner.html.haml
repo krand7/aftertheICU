@@ -1,0 +1,16 @@
+.row.partner-container
+  .col-md-3
+    = image_tag partner.photo_url, class: 'partner-img img-responsive'
+  .col-md-9
+    %h2
+      - if partner.link.present?
+        = link_to partner.name, partner.link
+      - else
+        = partner.name
+    %p.lead
+      = partner.description
+  - if current_user.admin?
+    .admin-bar
+      = link_to edit_admin_partner_path(partner) do
+        %span.glyphicon.glyphicon-pencil
+

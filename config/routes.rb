@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    resources :partners
+  end
+  namespace :admin do
     get '/', to: :dashboard
     resources :team_members
   end
@@ -29,6 +32,7 @@ Rails.application.routes.draw do
     get :version
     get :welcome
     get :team
+    get :partners
   end
 
   devise_for :users, controllers: { registrations: 'registrations' }, path_names: { sign_up: 'join', sign_in: 'login', sign_out: 'logout' }, path: "/"
