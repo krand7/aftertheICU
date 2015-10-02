@@ -1,0 +1,7 @@
+%h1 Consent Forms
+
+%ul
+  - @consent_forms.each do |consent_form|
+    %li= "#{consent_form.title} (#{consent_form.name})"
+
+= link_to 'New Consent Form', new_admin_consent_form_path

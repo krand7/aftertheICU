@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :partners
-  end
-  namespace :admin do
     get '/', to: :dashboard
     resources :team_members
+    resources :partners
+    resources :consent_forms do
+      member do
+        post :preview
+      end
+    end
   end
 
   resources :research_topics do

@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+default:
+  title: Consent Form
+  name: default_consent_form
+  content: This is the consent for this PPRN

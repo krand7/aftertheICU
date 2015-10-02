@@ -1,0 +1,28 @@
+= form_for @consent_form do |f|
+  - if @consent_form.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@consent_form.errors.count, "error")
+        prohibited this consent_form from being saved:
+      %ul
+        - @consent_form.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :title, nil, class: 'control-label'
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :name, nil, class: 'control-label'
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :content, nil, class: 'control-label'
+    %hr
+    .row
+      .col-md-6
+        %p Markdown
+        = f.text_area :content, rows: 30, class: 'form-control', data: { object: 'consent-content-input', formid: "#{@consent_form.new_record? ? 'new' : @consent_form.id}" }
+      .col-md-6
+        %p Preview
+        #consent-preview
+
+  .form-group
+    = f.submit "#{@consent_form.new_record? ? 'Create' : 'Save'} Consent Form", class: 'btn btn-primary'

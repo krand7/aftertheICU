@@ -1,4 +1,5 @@
 class Admin::TeamMembersController < ApplicationController
+  before_action :authenticate_user!
   before_action :authenticate_admin!
   before_action :set_team_member, only: [:show, :edit, :update, :destroy]
 
