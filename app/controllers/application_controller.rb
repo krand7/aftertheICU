@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     @partners = Admin::Partner.order('position')
   end
 
+  def privacy_policy
+    @privacy_policy = Admin::ConsentForm.find_by_name('privacy_policy')
+  end
+
   protected
 
     def configure_permitted_parameters

@@ -4,6 +4,5 @@
 
 $(document)
   .on('input', '[data-object~="consent-content-input"]', () ->
-    console.log 'Time to preview'
     $.post(root_url + 'admin/consent_forms/' + $(this).data('formid') + '/preview', $("#admin_consent_form_content").serialize() + "&consent_form_id=" + $(this).data('formid'), null, "script")
   )

@@ -1,3 +1,5 @@
+- @consent_form.title = params[:admin_consent_form_title] if params[:admin_consent_form_title].present?
+- @consent_form.name = params[:admin_consent_form_name] if params[:admin_consent_form_name].present?
 = form_for @consent_form do |f|
   - if @consent_form.errors.any?
     #error_explanation

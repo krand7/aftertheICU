@@ -10,3 +10,15 @@
   background-color: #f6f6f6;
   border-radius: 2px;
 }
+
+.privacy-policy-creation-callout {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #e54835;
+  border-radius: 2px;
+  background-color: #e54835;
+  color: white;
+  p.lead {
+    margin-bottom: 0px;
+  }
+}

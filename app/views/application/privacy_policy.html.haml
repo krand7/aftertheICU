@@ -1,0 +1,8 @@
+- if @privacy_policy.present?
+  %h1
+    = @privacy_policy.title
+  %hr
+  = simple_markdown(@privacy_policy.content)
+
+- else
+  This site's privacy policy hasn't been set up yet.

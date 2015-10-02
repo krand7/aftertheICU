@@ -1,2 +1,4 @@
 .footer-link= link_to 'Team', team_path
 .footer-link= link_to 'Partners', partners_path
+- if Admin::ConsentForm.where(name: 'privacy_policy').present?
+  .footer-link= link_to 'Privacy Policy', privacy_policy_path
