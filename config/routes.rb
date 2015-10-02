@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    resources :highlights
+  end
+  namespace :admin do
     get '/', to: :dashboard
     resources :team_members
     resources :partners

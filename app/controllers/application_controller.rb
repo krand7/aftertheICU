@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: "You do not have sufficient privileges to access that page." unless current_user.system_admin?
   end
 
+  def dashboard
+    @highlights = Admin::Highlight.where(displayed: true).first(3)
+  end
+
   def team
     @team_members = Admin::TeamMember.order('position')
   end

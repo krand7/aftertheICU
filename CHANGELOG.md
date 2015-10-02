@@ -7,3 +7,4 @@
   - Ability to create team members for static page
   - Ability to create partners for static page
   - Ability to create consent forms and privacy policy
+  - Ability to create dashboard highlights
