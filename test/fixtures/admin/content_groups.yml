@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: FAQs
+  slug: faqs
+  position: 1
+  description: The most frequently asked questions about things

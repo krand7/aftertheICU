@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Page One
+  slug: page-one
+  content: This is the first content page
+  position: 1
+  content_group: one

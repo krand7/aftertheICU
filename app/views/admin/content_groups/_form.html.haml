@@ -1,0 +1,28 @@
+= form_for @content_group, html: { class: 'form-horizontal' } do |f|
+  - if @content_group.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@content_group.errors.count, "error")
+        prohibited this content_group from being saved:
+      %ul
+        - @content_group.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :title, nil, class: 'control-label col-md-2'
+    .col-md-10
+      = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :slug, nil, class: 'control-label col-md-2'
+    .col-md-10
+      = f.text_field :slug, class: 'form-control'
+  .form-group
+    = f.label :position, nil, class: 'control-label col-md-2'
+    .col-md-10
+      = f.number_field :position, class: 'form-control'
+  .form-group
+    = f.label :description, nil, class: 'control-label col-md-2'
+    .col-md-10
+      = f.text_area :description, class: 'form-control'
+  .form-group
+    .col-md-10.col-md-offset-2
+      = f.submit "#{@content_group.new_record? ? 'Create' : 'Save'} Group", class: 'btn btn-primary'

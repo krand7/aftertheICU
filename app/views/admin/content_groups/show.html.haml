@@ -1,0 +1,11 @@
+%h1= @content_group.title
+= link_to 'Edit', edit_admin_content_group_path(@content_group)
+= link_to 'Back', admin_content_groups_path
+%hr
+- if @content_pages.present?
+  - @content_pages.each do |content_page|
+    %h3= link_to content_page.title, admin_content_group_content_page_path(@content_group, content_page)
+    %p= truncate(content_page.content, length: 400)
+- else
+  %p You haven't added any pages to this group yet.
+  = link_to 'Add Page', new_admin_content_group_content_page_path(@content_group), class: 'btn btn-primary'

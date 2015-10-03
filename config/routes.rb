@@ -1,15 +1,25 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    resources :highlights
+  scope 'learn' do
+    get '/', to: 'learn#index', as: 'learn'
+    get '/:content_page_slug', to: 'learn#show', as: 'learn_page'
   end
+
   namespace :admin do
     get '/', to: :dashboard
     resources :team_members
     resources :partners
+    resources :highlights
     resources :consent_forms do
       member do
         post :preview
+      end
+    end
+    resources :content_groups do
+      resources :content_pages do
+        member do
+          post :preview
+        end
       end
     end
   end

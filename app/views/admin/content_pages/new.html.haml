@@ -1,0 +1,7 @@
+%h1
+  New Page for:
+  = @content_group.title
+
+= render 'form'
+
+= link_to 'Back', admin_content_group_content_pages_path(@content_group)
