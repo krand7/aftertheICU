@@ -26,4 +26,23 @@ class Response < ActiveRecord::Base
   scope :locked,      -> { where state: 'locked' }
 
   # Methods
+  def locked?
+    state == 'locked'
+  end
+
+  def complete?
+    state == 'compete'
+  end
+
+  def value
+    res = {}
+    response_values.each do |rv|
+      res[rv.answer_template.id] ||= []
+      res[rv.answer_template.id] << rv.value
+    end
+
+    res.each_pair { |k, v| res[k] = v.first if v.length == 1 }
+
+    res
+  end
 end

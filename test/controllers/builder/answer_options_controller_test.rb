@@ -51,7 +51,7 @@ class Builder::AnswerOptionsControllerTest < ActionController::TestCase
   test "should create answer option as builder" do
     login(@builder)
     assert_difference('AnswerOption.count') do
-      post :create, answer_template_id: @answer_template, answer_option: { text: 'New Answer Option', hotkey: '1', value: '1' }
+      post :create, answer_template_id: @answer_template, answer_option: { text: 'New Answer Option', hotkey: '1', value: '3' }
     end
     assert_not_nil assigns(:survey)
     assert_not_nil assigns(:question)
@@ -59,7 +59,8 @@ class Builder::AnswerOptionsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:answer_option)
     assert_equal 'New Answer Option', assigns(:answer_option).text
     assert_equal '1', assigns(:answer_option).hotkey
-    assert_equal 1, assigns(:answer_option).value
+    assert_equal 3, assigns(:answer_option).value
+    assert_equal 0, assigns(:answer_option).errors.size
     assert_redirected_to builder_answer_template_path(assigns(:answer_template))
   end
 
@@ -132,14 +133,15 @@ class Builder::AnswerOptionsControllerTest < ActionController::TestCase
 
   test "should update answer option as builder" do
     login(@builder)
-    patch :update, id: @answer_option, answer_option: { text: 'Updated Answer Option', hotkey: '2', value: '2' }
+    patch :update, id: @answer_option, answer_option: { text: 'Updated Answer Option', hotkey: '2', value: '100' }
     assert_not_nil assigns(:survey)
     assert_not_nil assigns(:question)
     assert_not_nil assigns(:answer_template)
     assert_not_nil assigns(:answer_option)
     assert_equal 'Updated Answer Option', assigns(:answer_option).text
     assert_equal '2', assigns(:answer_option).hotkey
-    assert_equal 2, assigns(:answer_option).value
+    assert_equal 100, assigns(:answer_option).value
+    assert_equal 0, assigns(:answer_option).errors.size
     assert_redirected_to builder_answer_template_path(assigns(:answer_template))
   end
 

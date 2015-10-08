@@ -1,0 +1,4 @@
+= check_box_tag "#{question.to_param}[preferred_not_to_answer]", "1", response.preferred_not_to_answer?, disabled: response.locked?, name: 'response[preferred_not_to_answer]'
+%label{ for: "#{question.to_param}[preferred_not_to_answer]", style: "#{'cursor: default' if response.locked?}", class: "#{'hidden' if (response.locked? and !response.preferred_not_to_answer?)}" }
+  %span.hotkey{ style: "#{'cursor: default' if response.locked?}" } &#10003;
+  %p Skip this question

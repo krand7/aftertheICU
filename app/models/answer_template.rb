@@ -27,7 +27,7 @@ class AnswerTemplate < ActiveRecord::Base
   # Named scopes
   # Methods
   def allows_answer_options?
-    self.template_type == 'radio' or self.template_type == 'checkbox'
+    template_type == 'radio' or template_type == 'checkbox'
   end
 
   def name_with_options
@@ -43,11 +43,15 @@ class AnswerTemplate < ActiveRecord::Base
   end
 
   def parent_template_option_values
-    if self.parent_answer_template
-      self.parent_answer_template.answer_options.pluck(:value)
+    if parent_answer_template
+      parent_answer_template.answer_options.pluck(:value)
     else
       []
     end
+  end
+
+  def child_templates(question, value)
+    question.answer_templates.where(parent_answer_template_id: self.id, parent_answer_option_value: value)
   end
 
 end

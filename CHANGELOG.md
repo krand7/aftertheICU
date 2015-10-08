@@ -4,3 +4,4 @@
 - Functional forum created
 - Functional research topic ranking created
 - Functional survey builder created
+- Functional survey completion added

@@ -18,4 +18,7 @@ class AnswerOption < ActiveRecord::Base
 
   # Named scopes
   # Methods
+  def display_class_or_default
+    display_class.present? ? display_class : 'label-default label-sm'
+  end
 end

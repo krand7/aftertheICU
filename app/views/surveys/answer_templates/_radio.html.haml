@@ -1,0 +1,13 @@
+%h4.f300= answer_template.text
+%div{ class: "#{'multiple-question-container' if question.answer_templates.where(template_type: 'radio', parent_answer_template_id: nil).count > 1 } "}
+  - answer_template.answer_options.distinct.each do |answer_option|
+    - child_templates = answer_template.child_templates(question, answer_option.value)
+    .radio-input-container
+      = radio_button_tag "#{question.id}[#{answer_template.id}]", answer_option.id, have_checked?(response, answer_template, answer_option.id), name: "response[#{answer_template.id}]", id: "question_#{question.id}_#{answer_template.id}_#{answer_option.value}", data: { hotkey: "#{answer_option.hotkey unless response.locked?}", object: "#{'reveal-next-input' if child_templates.count > 0 }", target: "#{"question_#{question.id}_answer_#{answer_option.id}_secondary" if child_templates.count > 0}" }, disabled: response.locked?
+      %label{ for: "question_#{question.id}_#{answer_template.id}_#{answer_option.value}", style: "#{'cursor: default' if response_session.locked?}" }
+        %p= answer_option.text
+      - if child_templates.count > 0
+        .hidden-input{ data: { receiver: "question_#{question.id}_answer_#{answer_option.id}_secondary" } }
+          - child_templates.each do |child_template|
+            - if child_template.template_type.present? and answer_template != child_template
+              = render "surveys/answer_templates/child", question: question, response_session: response_session, child_template: child_template, response: response

@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     Survey.current.where(user_id: self.id)
   end
 
+  def get_baseline_survey_response_session(survey)
+    response_sessions.where(encounter: 'baseline', survey_id: survey.id, child_id: nil).first_or_create
+  end
+
   # Overriding Devise built-in active_for_authentication? method
   def active_for_authentication?
     super and not self.deleted?

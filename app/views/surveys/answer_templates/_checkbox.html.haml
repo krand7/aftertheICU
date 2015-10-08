@@ -1,0 +1,12 @@
+%h4.f300= answer_template.text
+- answer_template.answer_options.distinct.each do |answer_option|
+  - child_templates = answer_template.child_templates(question, answer_option.value)
+  - accessor_id = "question_#{question.id}_#{answer_template.id}_#{answer_option.value}"
+  .check-box-container
+    = check_box_tag "#{question.id}[#{answer_template.id}][]", answer_option.id, have_checked?(response, answer_template, answer_option.id), id: "#{accessor_id}", name: "response[#{answer_template.id}][]", data: { object: "#{'reveal-next-input' if child_templates.count > 0 }", target: "#{"question_#{question.id}_answer_#{answer_option.id}_secondary" if child_templates.count > 0}" }, disabled: response.locked?
+    %label{ for: "#{accessor_id}", style: "#{'cursor: default' if response.locked?}" }
+      %p=answer_option.text
+    - if child_templates.count > 0
+      .hidden-input{ style: 'width: 80%; margin: auto', data: { receiver: "question_#{question.id}_answer_#{answer_option.id}_secondary" } }
+        - child_templates.each do |child_template|
+          = render "surveys/questions/answer_templates/child", question: question, response_session: response_session, child_template: child_template, response: response

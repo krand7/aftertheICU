@@ -13,4 +13,7 @@ class ResponseValue < ActiveRecord::Base
   # Concerns
   # Named scopes
   # Methods
+  def value
+    answer_template.data_type
+  end
 end

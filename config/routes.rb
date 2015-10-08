@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :surveys
+  resources :surveys do
+    collection do
+      post :process_answer
+      post :submit
+    end
+  end
 
   namespace :builder do
     resources :surveys, shallow: true do

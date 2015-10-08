@@ -1,0 +1,33 @@
+.survey-indicator
+  %span#title Progress
+  %ul
+    - @survey.questions.each_with_index do |question, index|
+      - response = @response_session.responses.where(question_id: question.id).first_or_initialize
+      - if response.locked?
+        %li.locked{ data: { object: 'survey-indicator', target: "#{index}" } }
+          %span.glyphicon.glyphicon-lock{ 'aria-hidden'=>'true' }
+      - elsif response.complete?
+        %li.complete{ data: { object: 'survey-indicator', target: "#{index}" } } &#10003;
+      - else
+        %li.incomplete{ data: { object: 'survey-indicator', target: "#{index}" } }= index + 1
+
+.survey-container
+  %h2.f300
+    Welcome to the
+    = @survey.name
+    survey!
+  %p.lead
+    = @survey.description.html_safe if @survey.description.present?
+  %p.f300
+    The orange progress sidebar on the left side of the screen will show you how you are advancing, and easily let you jump to questions that you may have missed. Remember, you are allowed to navigate away at any time and your answers will automatically be saved, but
+    %span.f500 you must provide an answer to each question before a survey is considered complete.
+
+- @survey.questions.each_with_index do |question, index|
+  = render 'surveys/question', question: question, response_session: @response_session, question_number: index
+
+.survey-container{ data: { object: 'survey-submit' } }
+  - if @response_session.locked?
+    %p.lead You've already submitted this survey.
+  - else
+    .panel-heading{ style: 'background-color: transparent;', data: { object: 'survey-submit-btn-container' } }
+      .btn.btn-primary.btn-lg{ style: 'width:100%', data: { object: 'survey-submit-btn', path: submit_surveys_path, response_session_id: @response_session.id } } Submit Answers

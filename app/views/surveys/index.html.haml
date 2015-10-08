@@ -1,5 +1,8 @@
 %h1 Surveys
 
 %ul
-  - @surveys.each do |survey|
-    %li= survey.name
+  - @surveys.in_groups_of(3, false) do |survey_group|
+    .row
+      - survey_group.each do |survey|
+        .col-sm-4.centered
+          = render 'surveys/progress_indicator', survey: survey
