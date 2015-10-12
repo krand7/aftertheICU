@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+weight:
+  title: What is your weight?
+  display_type: number_input
+  slug: what-is-your-weight
+  user: survey_builder
+  survey: about_me
+
+how_are_you:
+  title: How are you?
+  display_type: radio_input
+  slug: how-are-you
+  user: survey_builder
+  deleted: false
+  survey: about_me

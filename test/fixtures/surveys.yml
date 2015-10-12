@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+about_me:
+  name: About Me
+  description: A generic survey
+  status: show
+  slug: about-me
+  user: survey_builder
+
+built_on_web:
+  name: Built On Web
+  description: A survey built on the web interface
+  status: show
+  slug: built-on-web
+  user: survey_builder

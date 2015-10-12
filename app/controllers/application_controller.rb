@@ -25,6 +25,15 @@ class ApplicationController < ActionController::Base
     @privacy_policy = Admin::ConsentForm.find_by_name('privacy_policy')
   end
 
+  def empty_response_or_root_path(path = root_path)
+    respond_to do |format|
+      format.html { redirect_to path }
+      format.js { render nothing: true }
+      format.json { head :no_content }
+      format.text { render nothing: true }
+    end
+  end
+
   protected
 
     def configure_permitted_parameters

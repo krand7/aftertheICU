@@ -1,0 +1,17 @@
+- response = @response_session.responses.where(question_id: question.id).first_or_initialize
+
+-# if question.answer_templates.where(template_type: 'checkbox', parent_answer_option_value: nil).count > 0
+-# if question.answer_templates.where(template_type: 'radio', parent_answer_option_value: nil).count > 0
+-# if question.answer_templates.where(template_type: 'radio', parent_answer_template_id: nil).count > 1
+
+
+= form_tag process_answer_surveys_path(question_id: question, response_session_id: response_session), role: "form", class: "survey-container", data: { object: "question-container-#{question_number}" } do
+  .panel
+    .question-container
+      %h3.f300= question.title
+
+    .input-container
+      - question.answer_templates.where(parent_answer_option_value: [nil, '']).each do |answer_template|
+        = render "surveys/answer_templates/#{answer_template.template_type}", question: question, response_session: @response_session, answer_template: answer_template, response: response
+      .centered
+        = render 'surveys/answer_templates/prefer_not_to_answer', question: question, response: response

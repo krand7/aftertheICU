@@ -1,0 +1,2 @@
+module Builder::SurveysHelper
+end

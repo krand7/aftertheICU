@@ -1,0 +1,42 @@
+%h1
+  = link_to 'Surveys', builder_surveys_path
+  &middot;
+  = link_to @survey.name, builder_survey_path(@survey)
+  &middot;
+  = @question.slug
+
+= link_to 'Edit', edit_builder_question_path(@question)
+= link_to 'Back', builder_survey_questions_path(@survey)
+
+%dl.dl-horizontal
+  %dt
+    %strong Text
+  %dd= @question.title
+
+  %dt
+    %strong Slug
+  %dd
+    = @question.slug
+
+%h3 Answer Templates
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Template
+      %th Parent Template
+      %th Parent Option Value
+      %th Creator
+      %th Actions
+  - @question.answer_templates.each do |answer_template|
+    %tr
+      %td= link_to answer_template.name, builder_answer_template_path(answer_template)
+      %td= answer_template.template_type
+      %td= answer_template.parent_answer_template.name if answer_template.parent_answer_template
+      %td= answer_template.parent_answer_option_value
+      %td= link_to_if current_user.admin?, answer_template.user.name, member_path(answer_template.user.forum_name) if answer_template.user
+      %td= link_to 'Edit', edit_builder_answer_template_path(answer_template), class: 'btn btn-xs btn-default'
+  %tr
+    %td{ colspan: '8' }
+      = link_to 'Add Another Answer Template', new_builder_question_answer_template_path(@question), class: 'btn btn-xs btn-default'
+

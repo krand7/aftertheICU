@@ -1,0 +1,58 @@
+- url = @survey.new_record? ? builder_surveys_path : builder_survey_path(@survey)
+- method = @survey.new_record? ? :post : :patch
+= form_for @survey, url: url, method: method, html: { class: 'form-horizontal' } do |f|
+  - if @survey.errors.any?
+    .panel.panel-danger
+      .panel-heading
+        %strong
+          = pluralize(@survey.errors.count, "error")
+          prohibited this survey from being saved:
+
+      .panel-body
+        %ul
+          - @survey.errors.full_messages.each do |message|
+            %li= message
+
+  .form-group
+    = f.label :name, 'Name', class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :description, 'Description', class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_area :description, class: 'form-control'
+
+  .form-group
+    = f.label :slug, 'URL Slug', class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :slug, class: 'form-control'
+      .text-info
+        Please only use lowercase letters, numbers, and dashes.
+
+  .form-group
+    = f.label :status, nil, class: 'col-md-2 control-label'
+    .col-md-10
+      = f.select :status, Survey::STATUS, { include_blank: true }, class: 'form-control'
+
+  / .form-group
+  /   .col-md-10.col-md-offset-2
+  /     .checkbox
+  /       %label
+  /         = f.check_box :pediatric
+  /         Pediatric Survey
+
+  / .form-group{ style: "#{'display:none' unless @survey.pediatric?}", data: { object: 'show-for-pediatric' } }
+  /   = f.label :child_min_age, 'Child Minimum Age', class: 'col-md-2 control-label'
+  /   .col-md-10
+  /     = f.text_field :child_min_age, class: 'form-control'
+
+  / .form-group{ style: "#{'display:none' unless @survey.pediatric?}", data: { object: 'show-for-pediatric' } }
+  /   = f.label :child_max_age, 'Child Maximum Age', class: 'col-md-2 control-label'
+  /   .col-md-10
+  /     = f.text_field :child_max_age, class: 'form-control'
+
+  .form-group
+    .col-md-10.col-md-offset-2
+      = f.submit "#{@survey.new_record? ? 'Create' : 'Save'} Survey", class: 'btn btn-primary'
+      = link_to 'Cancel', builder_surveys_path, class: 'btn btn-default'

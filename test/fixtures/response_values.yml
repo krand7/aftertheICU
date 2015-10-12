@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  response: one
+  answer_template: weight
+  numeric_value: 150
+
+two:
+  response: two
+  answer_template: how_are_you
+  answer_option: good

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+weight:
+  name: weight_template
+  data_type: numeric_value
+  template_type: number
+  user: survey_builder
+  question: weight
+
+how_are_you:
+  name: how_are_you_template
+  data_type: answer_option_id
+  template_type: radio
+  user: survey_builder
+  question: how_are_you

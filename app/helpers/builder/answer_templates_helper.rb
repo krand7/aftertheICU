@@ -1,0 +1,2 @@
+module Builder::AnswerTemplatesHelper
+end

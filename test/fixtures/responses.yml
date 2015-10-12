@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question: weight
+  response_session: new
+  state: complete
+
+two:
+  question: how_are_you
+  response_session: new
+  state: complete

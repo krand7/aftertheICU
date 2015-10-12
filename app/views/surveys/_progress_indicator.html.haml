@@ -1,0 +1,18 @@
+- percent = 0
+
+.radial-progress.hidden-xs{ style: 'display:block; margin: 20px auto' }
+  .circle{ data: { object: "circle_percentage", percent: "#{percent}", survey_id: survey.id } }
+    .mask.left
+      .fill
+    .mask.right
+      .fill
+      .fill.fix
+    .shadow
+  .inset
+    .percentage
+      .numbers
+        %br
+        .span{ data: { object: "circle_percentage_display", survey_id: survey.id } }
+          = percent.to_s + '%'
+%h4.f300.centered
+  = link_to survey.name, survey
