@@ -1,3 +1,19 @@
-a.no-underline {
-  text-decoration: none;
+a.underline:hover {
+  text-decoration: underline;
+}
+
+a.highlight {
+  color: $secondary;
+}
+
+a.higlight:hover {
+  color: darken($secondary, 11%);
+}
+
+a.dark {
+  color: #777;
+}
+
+a.dark:hover {
+  color: #333;
 }

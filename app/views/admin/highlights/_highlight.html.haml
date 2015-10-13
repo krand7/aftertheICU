@@ -1,4 +1,4 @@
-= link_to highlight.link, class: 'no-underline' do
+= link_to highlight.link, class: 'highlight' do
   .highlight-container
     = image_tag highlight.photo, class: 'img-responsive' if highlight.photo.present?
     %h3= highlight.title
@@ -10,5 +10,5 @@
       - else
         = link_to admin_highlight_path(highlight, admin_highlight: { displayed: true }), method: :patch do
           %span.glyphicon.glyphicon-star-empty.darkgray
-      = link_to edit_admin_highlight_path(highlight) do
+      = link_to edit_admin_highlight_path(highlight), class: 'dark' do
         %span.glyphicon.glyphicon-pencil

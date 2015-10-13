@@ -12,7 +12,7 @@
   %tbody
     - forum.topics.limit(topic_limit).each do |topic|
       %tr
-        %td= link_to "#{topic.name}", [forum, topic]
+        %td= link_to "#{topic.name}", [forum, topic], class: 'default'
         %td= topic.posts.count
         %td= topic.posts.last.user.forum_name if topic.posts.present? and topic.posts.last.user.present?
         %td= topic.posts.last.created_at.strftime("%-d %B %Y, %-l:%M %p") if topic.posts.present?

@@ -1,9 +1,12 @@
 .content-header
   .container
     %h1= @topic.name
-    - if current_user and current_user.system_admin?
-      %p= link_to 'Edit', edit_forum_topic_path(@forum, @topic)
-    %p= link_to 'Back', forum_path(@forum)
+    %p
+      = link_to 'Back', forum_path(@forum)
+      - if current_user and current_user.system_admin?
+        %span.white
+          |
+        = link_to 'Edit', edit_forum_topic_path(@forum, @topic)
 
 .container
   .topic-posts-container

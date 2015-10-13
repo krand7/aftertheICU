@@ -1,9 +1,13 @@
 .content-header
   .container
     %h1= @forum.name
-    - if current_user and current_user.admin?
-      %p= link_to 'Edit', edit_forum_path(@forum), class: 'btn btn-default btn-sm'
-    %p= link_to 'Back', forums_path
+    %p
+      = link_to 'Back', forums_path
+      - if current_user and current_user.admin?
+        %span.white
+          |
+        = link_to 'Edit', edit_forum_path(@forum)
+
 
 .container
   .content-container
