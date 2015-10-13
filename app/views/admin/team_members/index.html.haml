@@ -1,7 +1,11 @@
-%h1
-  Team Members
+.content-header
+  .container
+    %h1 Team Members
+    %p= link_to 'Back to Admin Dashboard', admin_path
 
-.row
-  = render @team_members
-
-= link_to 'New Team Member', new_admin_team_member_path
+.container
+  .content-container
+    .row
+      = render @team_members
+    %br
+    = link_to 'New Team Member', new_admin_team_member_path, class: 'btn btn-primary'

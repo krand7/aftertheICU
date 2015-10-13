@@ -1,3 +1,7 @@
-%h1= content_page.title
-%hr
-= simple_markdown(content_page.content)
+.content-header
+  .container
+    %h1= content_page.title
+
+.container
+  .content-container
+    = simple_markdown(content_page.content)

@@ -1,6 +1,10 @@
-%h1 Dashboard
+.content-header
+  .container
+    %h1 Dashboard
 
-.row
-  - @highlights.each do |highlight|
-    .col-md-3
-      = render highlight
+.container
+  .content-container
+    .row
+      - @highlights.each do |highlight|
+        .col-md-3
+          = render highlight

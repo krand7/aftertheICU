@@ -1,8 +1,14 @@
-%h1 Content Groups
-%hr
-- @content_groups.each do |content_group|
-  %p
-    = content_group.title
-    = link_to content_group.slug, content_group
-%hr
-= link_to 'New Content group', new_admin_content_group_path
+.content-header
+  .container
+    %h1 Content Groups
+    %p= link_to 'Back to Admin Dashboard', admin_path
+
+.container
+  .content-container
+    - @content_groups.each do |content_group|
+      %p
+      = content_group.title
+      = link_to content_group.slug, content_group
+    %br
+    %br
+    = link_to 'New Content group', new_admin_content_group_path, class: 'btn btn-primary'

@@ -9,7 +9,7 @@
         = partner.name
     %p.lead
       = partner.description
-  - if current_user.admin?
+  - if current_user and current_user.admin?
     .admin-bar
       = link_to edit_admin_partner_path(partner) do
         %span.glyphicon.glyphicon-pencil

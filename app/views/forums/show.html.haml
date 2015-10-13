@@ -1,9 +1,12 @@
-%p#notice= notice
+.content-header
+  .container
+    %h1= @forum.name
+    - if current_user and current_user.admin?
+      %p= link_to 'Edit', edit_forum_path(@forum), class: 'btn btn-default btn-sm'
+    %p= link_to 'Back', forums_path
 
-%h1= @forum.name
-- if current_user and current_user.admin?
-  = link_to 'Edit', edit_forum_path(@forum), class: 'btn btn-default btn-sm'
-= link_to 'Back', forums_path, class: 'btn btn-default btn-sm'
-= render 'forums/display', forum: @forum, topic_limit: nil
-- if current_user
-  = link_to 'New Topic', new_forum_topic_path(@forum), class: 'btn btn-primary'
+.container
+  .content-container
+    = render 'forums/display', forum: @forum, topic_limit: nil
+    - if current_user
+      = link_to 'New Topic', new_forum_topic_path(@forum), class: 'btn btn-primary'

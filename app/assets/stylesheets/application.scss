@@ -2,17 +2,18 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "colors";
 @import "alignment";
 @import "bs-callout";
 @import "fonts";
 @import "flash";
 @import "forms";
 @import "links";
-@import "colors";
 
 @import "navbar";
 @import "body";
 @import "scroll";
+@import "content";
 
 @import "account";
 @import "posts";

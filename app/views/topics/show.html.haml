@@ -1,47 +1,50 @@
-%h1= @topic.name
-- if current_user and current_user.system_admin?
-  = link_to 'Edit', edit_forum_topic_path(@forum, @topic), class: 'btn btn-default btn-sm'
-= link_to 'Back', forum_path(@forum), class: 'btn btn-default btn-sm'
+.content-header
+  .container
+    %h1= @topic.name
+    - if current_user and current_user.system_admin?
+      %p= link_to 'Edit', edit_forum_topic_path(@forum, @topic)
+    %p= link_to 'Back', forum_path(@forum)
 
-.topic-posts-container
-  - @topic.posts.each do |post|
-    .topic-post-container
-      .poster-image
-        = render 'account/user_image_link', user: post.user, size: 50
-      .post
-        .post-header
-          %h4.poster-details
-            %span.f500
-              = post.user.forum_name.present? ? post.user.forum_name : 'Anonymous'
-            = post.is_first_post? ? "started the topic" : "replied"
-          %p.small.post-time
-            = post.created_at.strftime("%-d %B %Y, %-l:%M %p")
-        .post-content
-          = render 'posts/formatted', post: post
+.container
+  .topic-posts-container
+    - @topic.posts.each do |post|
+      .topic-post-container
+        .poster-image
+          = render 'account/user_image_link', user: post.user, size: 50
+        .post
+          .post-header
+            %h4.poster-details
+              %span.f500
+                = post.user.forum_name.present? ? post.user.forum_name : 'Anonymous'
+              = post.is_first_post? ? "started the topic" : "replied"
+            %p.small.post-time
+              = post.created_at.strftime("%-d %B %Y, %-l:%M %p")
+          .post-content
+            = render 'posts/formatted', post: post
 
-- @post = @topic.posts.new
-= form_for [@forum, @topic, @post], html: { class: 'form-horizontal' } do |f|
-  - if @post.errors.any?
-    #error_explanation.bs-callout.bs-callout-danger
-      %h4
-        = pluralize(@post.errors.count, "error")
-        prohibited this comment from being saved
-      %ul
-      - @post.errors.full_messages.each do |msg|
-        %li= msg
-  .new-post-container
-    %ul.nav.nav-tabs
-      %li.active
-        %a{ href: '#write-new', data: { toggle: 'tab' } }
-          Write
-      %li
-        %a{ href: '#preview-new', data: { toggle: 'tab', forum_id: "#{@forum.to_param}", topic_id: "#{@topic.to_param}", object: 'preview-post', post_id: 'new' } }
-          Preview
+  - @post = @topic.posts.new
+  = form_for [@forum, @topic, @post], html: { class: 'form-horizontal' } do |f|
+    - if @post.errors.any?
+      #error_explanation.bs-callout.bs-callout-danger
+        %h4
+          = pluralize(@post.errors.count, "error")
+          prohibited this comment from being saved
+        %ul
+        - @post.errors.full_messages.each do |msg|
+          %li= msg
+    .new-post-container
+      %ul.nav.nav-tabs
+        %li.active
+          %a{ href: '#write-new', data: { toggle: 'tab' } }
+            Write
+        %li
+          %a{ href: '#preview-new', data: { toggle: 'tab', forum_id: "#{@forum.to_param}", topic_id: "#{@topic.to_param}", object: 'preview-post', post_id: 'new' } }
+            Preview
 
-    .tab-content
-      #write-new.tab-pane.active
-        = f.text_area :description, rows: 7, class: 'form-control'
-      #preview-new.tab-pane{ style: 'min-height:177px;' }
-        #preview-new.post-container
-
-    = f.submit "Comment", class: 'btn btn-primary', data: { disable_with: "Posting comment..." }
+      .tab-content
+        #write-new.tab-pane.active
+          = f.text_area :description, rows: 7, class: 'form-control'
+        #preview-new.tab-pane{ style: 'min-height:177px;' }
+          #preview-new.post-container
+      %br
+      = f.submit "Comment", class: 'btn btn-primary', data: { disable_with: "Posting comment..." }

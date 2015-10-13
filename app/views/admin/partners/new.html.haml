@@ -1,5 +1,8 @@
-%h1 New Partner
+.content-header
+  .container
+    %h1 New Partner
+    %p= link_to 'Back', admin_partners_path
 
-= render 'form'
-
-= link_to 'Back', admin_partners_path
+.container
+  .content-container
+    = render 'form'

@@ -1,3 +1,12 @@
+// Theme
+$primary: #39C1C7;
+$secondary: #D35270;
+
+.primary { color: $primary; }
+.primary-bcg { background-color: $primary; }
+.secondary { color: $secondary; }
+.secondary-bcg { background-color: $secondary; }
+
 // Basics
 .orange { color: #ffa400; }
 

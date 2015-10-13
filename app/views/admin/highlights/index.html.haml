@@ -1,5 +1,10 @@
-%h1 Dashboard Highlights
+.content-header
+  .container
+    %h1 Dashboard Highlights
+    %p= link_to 'Back to Admin Dashboard', admin_path
 
-= render @highlights
-
-= link_to 'New Highlight', new_admin_highlight_path, class: 'btn btn-primary'
+.container
+  .content-container
+    = render @highlights
+    %br
+    = link_to 'New Highlight', new_admin_highlight_path, class: 'btn btn-primary'

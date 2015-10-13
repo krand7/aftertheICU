@@ -6,12 +6,13 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to "After the ICU", current_user ? dashboard_path : welcome_path, class: 'navbar-brand'
+      = link_to current_user ? dashboard_path : welcome_path, class: 'navbar-brand' do
+        = image_tag 'aftertheicu_logo2.png', class: 'img-responsive'
     %ul.nav.navbar-nav.navbar-right
       - if current_user
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            = image_tag current_user.photo_url, style: 'height: 30px; width: 30px; border-radius: 3px'
+            = image_tag current_user.photo_url, style: 'height: 25px; width: 25px; border-radius: 3px'
             = current_user.name
             %span.caret
           %ul.dropdown-menu
@@ -29,7 +30,7 @@
         %li
           = link_to 'Sign In', new_session_path(User)
         %li
-          = link_to 'Sign Up', new_registration_path(User)
+          = link_to 'Join', new_registration_path(User)
     #navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li

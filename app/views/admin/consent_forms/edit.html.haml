@@ -1,6 +1,9 @@
-%h1 Edit Consent Form
+.content-header
+  .container
+    %h1 Edit Consent Form
+    %p= link_to 'Show', @consent_form
+    %p= link_to 'Back', admin_consent_forms_path
 
-= render 'form'
-
-= link_to 'Show', @consent_form
-= link_to 'Back', admin_consent_forms_path
+.container
+  .content-container
+    = render 'form'

@@ -1,4 +1,8 @@
-%h1 Consent Forms
+.content-header
+  .container
+    %h1 Consent Forms
+    %p= link_to 'Back to Admin Dashboard', admin_path
+
 - unless @consent_forms.where(name: 'privacy_policy').present?
   .privacy-policy-creation-callout
     %p.lead
@@ -6,14 +10,15 @@
         It looks like you haven't created a privacy policy yet!
       Please create a form with the name 'privacy_policy', which will be publicly available and included in the site's footer.
       = link_to 'Create Private Policy', new_admin_consent_form_path(admin_consent_form_title: 'Privacy Policy', admin_consent_form_name: 'privacy_policy'), class: 'btn btn-default btn-sm'
-%br
-%br
-%ul
-  - @consent_forms.each do |consent_form|
-    %li
-      = consent_form.title
-      = surround '(', ')' do
-        = link_to consent_form.name, consent_form
-%br
-= link_to 'New Consent Form', new_admin_consent_form_path, class: 'btn btn-primary'
+
+.container
+  .content-container
+    %ul
+      - @consent_forms.each do |consent_form|
+        %li
+          = consent_form.title
+          = surround '(', ')' do
+            = link_to consent_form.name, consent_form
+    %br
+    = link_to 'New Consent Form', new_admin_consent_form_path, class: 'btn btn-primary'
 

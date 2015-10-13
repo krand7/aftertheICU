@@ -1,48 +1,57 @@
-%h1= @research_topic.name
-%p.lead= @research_topic.description
+.content-header
+  .container
+    %h1 Research
+    %p= link_to 'Back', research_topics_path
 
-- if current_user
-  - unless @research_topic.voted_by_user?(current_user)
-    = form_for([@research_topic, @vote]) do |f|
-      - if @vote.errors.any?
-        #error_explanation
-          %h2
-            = pluralize(@vote.errors.count, "error")
-            prohibited this vote from being saved:
-          %ul
-            - @vote.errors.full_messages.each do |message|
-              %li= message
-      .form-group
-        = radio_button_tag "endorse", 1, @research_topic.endorsed_by_user?(current_user)
-        %label.endorse-label{ for: "endorse_#{@research_topic.id}_1" } Agree
-      .form-group
-        = radio_button_tag "endorse", 0, @research_topic.opposed_by_user?(current_user)
-        %label.endorse-label{ for: "endorse_#{@research_topic.id}_0" } Disagree
-      .form-group
-        = label_tag :comment, nil, class: 'control-label'
-        = text_area_tag :comment, nil, class: 'form-control'
-      .form-group
-        = f.hidden_field :research_topic_id, value: @research_topic.id
-        = f.submit
-  - else
-    -# Vote status
-    %div{ style: "padding: 20px; color: white; background-color: #{@research_topic.endorsed_by_user?(current_user) ? '#78c679' : '#e54835'}"}
-      %i.fa.fa-lg{ class: "#{@research_topic.endorsed_by_user?(current_user) ? 'fa-thumbs-up' : 'fa-thumbs-down' }" }
-      &nbsp;
-      You
-      = @research_topic.endorsed_by_user?(current_user) ? "agreed" : "disagreed"
-      that this is a research priority.
-    -# Research topic approval
-    - if @research_topic.votes.count > 0
-      %h3.centered
-        Endorsement:
-      %h4.centered.f300
-        = "#{@research_topic.total_rating.round}%"
-        = surround "(", ")" do
-          %span.italic= pluralize(@research_topic.votes.current.count, 'vote')
-      %br
-    -# Comments
-    %ul.list-group
-      - @research_topic.comments.each do |comment|
-        %li.list-group-item= comment.description
+.container
+  .content-container
+    %h1= @research_topic.name
+    %p.lead= @research_topic.description
+
+
+  - if current_user
+    .content-container
+    - unless @research_topic.voted_by_user?(current_user)
+      = form_for([@research_topic, @vote]) do |f|
+        - if @vote.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(@vote.errors.count, "error")
+              prohibited this vote from being saved:
+            %ul
+              - @vote.errors.full_messages.each do |message|
+                %li= message
+        .form-group
+          = radio_button_tag "endorse", 1, @research_topic.endorsed_by_user?(current_user)
+          %label.endorse-label{ for: "endorse_#{@research_topic.id}_1" } Agree
+        .form-group
+          = radio_button_tag "endorse", 0, @research_topic.opposed_by_user?(current_user)
+          %label.endorse-label{ for: "endorse_#{@research_topic.id}_0" } Disagree
+        .form-group
+          = label_tag :comment, nil, class: 'control-label'
+          = text_area_tag :comment, nil, class: 'form-control'
+        .form-group
+          = f.hidden_field :research_topic_id, value: @research_topic.id
+          = f.submit
+    - else
+      -# Vote status
+      %div{ style: "padding: 20px; color: white; background-color: #{@research_topic.endorsed_by_user?(current_user) ? '#78c679' : '#e54835'}"}
+        %i.fa.fa-lg{ class: "#{@research_topic.endorsed_by_user?(current_user) ? 'fa-thumbs-up' : 'fa-thumbs-down' }" }
+        &nbsp;
+        You
+        = @research_topic.endorsed_by_user?(current_user) ? "agreed" : "disagreed"
+        that this is a research priority.
+      -# Research topic approval
+      - if @research_topic.votes.count > 0
+        %h3.centered
+          Endorsement:
+        %h4.centered.f300
+          = "#{@research_topic.total_rating.round}%"
+          = surround "(", ")" do
+            %span.italic= pluralize(@research_topic.votes.current.count, 'vote')
+        %br
+      -# Comments
+      %ul.list-group
+        - @research_topic.comments.each do |comment|
+          %li.list-group-item= comment.description
 

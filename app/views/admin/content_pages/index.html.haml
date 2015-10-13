@@ -1,3 +1,8 @@
-%h1 Content Pages
+.content-header
+  .container
+    %h1 Content Pages
+    %p= link_to 'Back to Admin Dashboard', admin_path
 
-= link_to 'New Page', new_admin_content_group_content_page_path(@content_group)
+.container
+  .content-container
+    = link_to 'New Page', new_admin_content_group_content_page_path(@content_group)

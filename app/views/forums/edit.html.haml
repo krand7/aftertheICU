@@ -1,3 +1,8 @@
-%h1 Editing Forum
-= render 'form'
-= link_to 'Back', forums_path, class: 'btn btn-default'
+.content-header
+  .container
+    %h1 Editing Forum
+    %p= link_to 'Back', forums_path
+
+.container
+  .content-container
+    = render 'form'

@@ -1,7 +1,11 @@
-%h1= @member.forum_name
+.content-header
+  .container
+    %h1= @member.forum_name
 
-%p= "#{@member.forum_name} has #{@member.points} points"
-
-%ul
-  %li= pluralize(@member.posts.count, 'post')
-  %li= pluralize(@member.topics.count, 'topic')
+.container
+  .content-container
+    %p= "#{@member.forum_name} has #{@member.points} points"
+    %br
+    %ul
+      %li= pluralize(@member.posts.count, 'post')
+      %li= pluralize(@member.topics.count, 'topic')

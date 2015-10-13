@@ -1,3 +1,8 @@
-%h1 New Research Topic
-= render 'form'
-= link_to 'Back', research_topics_path, class: 'btn btn-default btn-sm'
+.content-header
+  .container
+    %h1 New Research Topic
+    %p= link_to 'Back', research_topics_path
+
+.container
+  .content-container
+    = render 'form'

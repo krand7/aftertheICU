@@ -1,7 +1,11 @@
-%p#notice= notice
-%h1 Forums
-- @forums.each do |forum|
-  %h2= link_to "#{forum.name}", forum
-  = render 'forums/display', forum: forum, topic_limit: 10
-- if current_user and current_user.admin?
-  = link_to 'New Forum', new_forum_path, class: 'btn btn-primary'
+.content-header
+  .container
+    %h1 Forums
+
+.container
+  .content-container
+    - @forums.each do |forum|
+      %h2= link_to "#{forum.name}", forum
+      = render 'forums/display', forum: forum, topic_limit: 10
+    - if current_user and current_user.admin?
+      = link_to 'New Forum', new_forum_path, class: 'btn btn-primary'

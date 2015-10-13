@@ -1,7 +1,10 @@
-%h1
-  New Page for:
-  = @content_group.title
+.content-header
+  .container
+    %h1
+      New Page for:
+      = @content_group.title
+    %p= link_to 'Back', admin_content_group_content_pages_path(@content_group)
 
-= render 'form'
-
-= link_to 'Back', admin_content_group_content_pages_path(@content_group)
+.container
+  .content-container
+    = render 'form'

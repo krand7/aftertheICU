@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
 
   def privacy_policy
     @privacy_policy = Admin::ConsentForm.find_by_name('privacy_policy')
+    redirect_to root_path and return if @privacy_policy.blank?
   end
 
   def empty_response_or_root_path(path = root_path)

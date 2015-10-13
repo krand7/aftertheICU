@@ -1,5 +1,8 @@
-%h1 Editing Highlight
+.content-header
+  .container
+    %h1 Editing Highlight
+    %p= link_to 'Back', admin_highlights_path
 
-= render 'form'
-
-= link_to 'Back', admin_highlights_path
+.container
+  .content-container
+    = render 'form'

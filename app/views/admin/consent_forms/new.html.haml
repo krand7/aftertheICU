@@ -1,5 +1,8 @@
-%h1 New Consent Form
+.content-header
+  .container
+    %h1 New Consent Form
+    %p= link_to 'Back', admin_consent_forms_path
 
-= render 'form'
-
-= link_to 'Back', admin_consent_forms_path
+.container
+  .content-container
+    = render 'form'

@@ -1,16 +1,20 @@
-%h1 Research
+.content-header
+  .container
+    %h1 Research
 
-%p Let us know what research topics matter most to you.
-= link_to 'Propose a new research topic', new_research_topic_path, class: 'btn btn-primary'
+.container
+  .content-container
+    %p Let us know what research topics matter most to you.
+    = link_to 'Propose a new research topic', new_research_topic_path, class: 'btn btn-primary'
 
-%br
-%h2 Newest
-.scroll-container
-  %ul.list-group
-    - @research_topics.newest.each do |research_topic|
-      %li.list-group-item= link_to "#{research_topic.name}", research_topic_path(research_topic)
-%h2 Most Discussed
-.scroll-container
-  %ul.list-group
-    - @research_topics.most_discussed.each do |research_topic|
-      %li.list-group-item= link_to "#{research_topic.name}", research_topic_path(research_topic)
+  .content-container
+    %h2 Newest
+    .scroll-container
+      %ul.list-group
+        - @research_topics.newest.each do |research_topic|
+          %li.list-group-item= link_to "#{research_topic.name}", research_topic_path(research_topic)
+    %h2 Most Discussed
+    .scroll-container
+      %ul.list-group
+        - @research_topics.most_discussed.each do |research_topic|
+          %li.list-group-item= link_to "#{research_topic.name}", research_topic_path(research_topic)

@@ -1,8 +1,10 @@
 - @title = "Version"
+.content-header
+  .container
+    %h1 Version
 
-%h1 Version
-
-.text-center{ style: 'margin-top:40px' }
-  %p.lead
-    Current version
-    %strong= AftertheICU::VERSION::STRING
+.container
+  .content-container
+    %p.lead.centered
+      Current version
+      %strong= AftertheICU::VERSION::STRING

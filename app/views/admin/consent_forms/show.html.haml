@@ -1,5 +1,7 @@
-%h1
-  = @consent_form.title
-%hr
-%p
-  = simple_markdown(@consent_form.content)
+.content-header
+  .container
+    %h1= @consent_form.title
+
+.container
+  .content-container
+    = simple_markdown(@consent_form.content)

@@ -1,8 +1,7 @@
-- if @privacy_policy.present?
-  %h1
-    = @privacy_policy.title
-  %hr
-  = simple_markdown(@privacy_policy.content)
+.content-header
+  .container
+    %h1= @privacy_policy.title
 
-- else
-  This site's privacy policy hasn't been set up yet.
+.container
+  .content-container
+    = simple_markdown(@privacy_policy.content)

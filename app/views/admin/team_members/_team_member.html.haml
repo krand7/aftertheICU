@@ -8,7 +8,7 @@
     = team_member.role
   %p.lead
     = team_member.bio
-  - if current_user.admin?
+  - if current_user and current_user.admin?
     .admin-bar
       = link_to edit_admin_team_member_path(team_member) do
         %span.glyphicon.glyphicon-pencil

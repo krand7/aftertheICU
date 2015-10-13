@@ -14,6 +14,7 @@
   - Ability to create consent forms and privacy policy
   - Ability to create dashboard highlights
   - Ability to create static learn pages
+- Initial user interface established
 
 **Gems**
 - Upgraded to ruby 2.2.3
