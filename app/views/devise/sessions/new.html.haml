@@ -4,18 +4,21 @@
 
 .container
   .content-container
-    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-vertical' }) do |f|
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' }) do |f|
       .form-group
-        = f.label :email, class: 'control-label'
-        = f.email_field :email, class: 'form-control'
+        = f.label :email, class: 'control-label col-md-2'
+        .col-md-10
+          = f.email_field :email, class: 'form-control'
 
       .form-group
-        = f.label :password, class: 'control-label'
-        = link_to "(Forgot password?)", new_password_path(resource_name), tabindex: '-1'
-        = f.password_field :password, class: 'form-control', autocomplete: 'off'
+        = f.label :password, class: 'control-label col-md-2'
+        .col-md-10
+          = f.password_field :password, class: 'form-control', autocomplete: 'off'
+          = link_to "(Forgot password?)", new_password_path(resource_name), tabindex: '-1'
 
       .form-group
-        = f.submit "Sign in", class: 'btn btn-success'
+        .col-md-10.col-md-offset-2
+          = f.submit "Sign in", class: 'btn btn-success'
 
 
   - if devise_mapping.confirmable?
