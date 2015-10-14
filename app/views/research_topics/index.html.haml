@@ -2,19 +2,23 @@
   .container
     %h1 Research
 
-.container
-  .content-container
-    %p Let us know what research topics matter most to you.
-    = link_to 'Propose a new research topic', new_research_topic_path, class: 'btn btn-primary'
+.container.content-container
+  .row
+    .col-sm-7
+      %p.lead Let us know which research topics matter most to you, and propose your own.
+    .col-sm-4.col-sm-offset-1
+      .righted= link_to 'Propose a new research topic', new_research_topic_path, class: 'btn btn-primary btn-lg'
+  .list-group
+    - @research_topics.newest.each do |research_topic|
+      .row
+        .col-sm-7.list-group-item
+          = link_to research_topic_path(research_topic) do
+            %p.lead.f400= research_topic.name
+            %p
+              %span.small= research_topic.created_at.strftime("%d %B %Y, %-l:%M %p")
+              %span.pull-right{ style: 'line-height: 15px; '}
+                = image_tag 'speech_bubble.png', width: 15, height: 15
+                = research_topic.comments.count
+        .col-sm-4.col-sm-offset-1
 
-  .content-container
-    %h2 Newest
-    .scroll-container
-      %ul.list-group
-        - @research_topics.newest.each do |research_topic|
-          %li.list-group-item= link_to "#{research_topic.name}", research_topic_path(research_topic)
-    %h2 Most Discussed
-    .scroll-container
-      %ul.list-group
-        - @research_topics.most_discussed.each do |research_topic|
-          %li.list-group-item= link_to "#{research_topic.name}", research_topic_path(research_topic)
+
