@@ -1,0 +1,7 @@
+.comment-container
+  .comment-img
+    = link_to member_path(comment.user.forum_name) do
+      = image_tag comment.user.photo_url, class: 'img-responsive'
+  .comment-content
+    %p= comment.description
+    %p.small.gray= comment.created_at.strftime('%m/%d/%Y, %-l:%M %p')

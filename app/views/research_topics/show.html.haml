@@ -1,16 +1,22 @@
 .content-header
   .container
-    %h1 Research
+    %h1 Research Proposal
     %p= link_to 'Back', research_topics_path
-
+%br
 .container
-  .content-container
-    %h1= @research_topic.name
-    %p.lead= @research_topic.description
-
-
+  .research-topic-container
+    %h4
+      = link_to member_path(@research_topic.user.forum_name) do
+        = image_tag @research_topic.user.photo_url, width: 50
+        = @research_topic.user.forum_name
+      asked:
+    %hr
+    .inset
+      %p.lead.f400= @research_topic.name
+      %p.lead= @research_topic.description
+%br
+.container
   - if current_user
-    .content-container
     - unless @research_topic.voted_by_user?(current_user)
       = form_for([@research_topic, @vote]) do |f|
         - if @vote.errors.any?
@@ -34,24 +40,26 @@
           = f.hidden_field :research_topic_id, value: @research_topic.id
           = f.submit
     - else
-      -# Vote status
-      %div{ style: "padding: 20px; color: white; background-color: #{@research_topic.endorsed_by_user?(current_user) ? '#78c679' : '#e54835'}"}
-        %i.fa.fa-lg{ class: "#{@research_topic.endorsed_by_user?(current_user) ? 'fa-thumbs-up' : 'fa-thumbs-down' }" }
-        &nbsp;
-        You
-        = @research_topic.endorsed_by_user?(current_user) ? "agreed" : "disagreed"
-        that this is a research priority.
       -# Research topic approval
       - if @research_topic.votes.count > 0
-        %h3.centered
-          Endorsement:
-        %h4.centered.f300
-          = "#{@research_topic.total_rating.round}%"
-          = surround "(", ")" do
-            %span.italic= pluralize(@research_topic.votes.current.count, 'vote')
-        %br
-      -# Comments
-      %ul.list-group
-        - @research_topic.comments.each do |comment|
-          %li.list-group-item= comment.description
-
+        .row
+          .col-sm-7
+            %br
+            - @research_topic.comments.each do |comment|
+              = render comment
+          .col-sm-5
+            %h3
+              Endorsement:
+              %span.f300
+                = "#{@research_topic.total_rating.round}%"
+                = surround "(", ")" do
+                  = pluralize(@research_topic.votes.current.count, 'vote')
+            .progress-meter
+              %span{ data: { object: 'research-topic-meter', progress: "#{@research_topic.total_rating}" } }
+            .vote-status-container
+              You
+              - if @research_topic.endorsed_by_user?(current_user)
+                %span.vote-status-endorsed agreed
+              - else
+                %span.vote-status-opposed disagreed
+              that this is a research priority.

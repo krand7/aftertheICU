@@ -1,3 +1,31 @@
 // Place all the styles related to the research_topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.research-topic-container {
+  box-shadow: 1px 1px 3px 2px #999;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+// Progress meter
+.progress-meter {
+  height: 30px;
+  width: 100%;
+  position: relative;
+  background-color: #ddd;
+  border: 5px solid white;
+  border-radius: 20px;
+  box-shadow: inset 0 -1px 1px rgba(255,255,255,.3);
+  z-index:2;
+  span {
+    background-color: #78c679;
+    border-radius: 20px 5px 5px 20px;
+    overflow: hidden;
+    height: 100%;
+    z-index:1;
+  }
+  span.border20 {
+    border-radius: 20px;
+  }
+}
