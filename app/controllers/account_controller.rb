@@ -18,6 +18,6 @@ class AccountController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:photo, :forum_name)
+    params.require(:user).permit(:photo, :forum_name, :gender, :birthdate)
   end
 end

@@ -2,10 +2,23 @@
   .container
     %h1 Admin Dashboard
 
-.container
-  .content-container
-    .box= link_to 'Team Members', admin_team_members_path
-    .box= link_to 'Partners', admin_partners_path
-    .box= link_to 'Consent Forms', admin_consent_forms_path
-    .box= link_to 'Dashboard Highlights', admin_highlights_path
-    .box= link_to 'Content Groups', admin_content_groups_path
+.container.content-container
+  .row
+    .col-sm-3
+      = link_to admin_users_path do
+        .box Users
+    .col-sm-3
+      = link_to admin_team_members_path do
+        .box Team Members
+    .col-sm-3
+      = link_to admin_partners_path do
+        .box Partners
+    .col-sm-3
+      = link_to admin_consent_forms_path do
+        .box Consent Forms
+    .col-sm-3
+      = link_to admin_highlights_path do
+        .box Dashboard Highlights
+    .col-sm-3
+      = link_to admin_content_groups_path do
+        .box Content Groups

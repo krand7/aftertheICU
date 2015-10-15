@@ -1,0 +1,24 @@
+.content-header
+  .container
+    %h1 Users
+    %p= link_to 'Back to admin dashboard', admin_path
+
+.container.content-container
+  %table.table.table-striped
+    %col
+    %col
+    %col
+    %col
+    %thead
+      %tr
+        %th Name
+        %th Email
+        %th Recent Activity
+        %th Joined
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= link_to user.name, admin_user_path(user.id)
+          %td= user.email
+          %td= time_ago_in_words(user.current_sign_in_at) if user.current_sign_in_at.present?
+          %td= user.created_at.strftime("%-d %B %Y")

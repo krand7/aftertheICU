@@ -9,6 +9,7 @@
 - Functional survey builder created
 - Functional survey completion added
 - Added admin dashboard
+  - User list with user details
   - Ability to create team members for static page
   - Ability to create partners for static page
   - Ability to create consent forms and privacy policy

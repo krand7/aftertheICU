@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get '/', to: :dashboard
+    get '/', action: :dashboard
+    get :users
+    get '/users/:id', action: :user_detail, as: 'user'
     resources :team_members
     resources :partners
     resources :highlights
