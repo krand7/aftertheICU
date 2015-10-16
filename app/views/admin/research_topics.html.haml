@@ -1,0 +1,40 @@
+.content-header
+  .container
+    %h1 Research Topics
+    %p= link_to 'Back to admin dashboard', admin_path
+
+.container.content-container
+  %table.table.table-striped
+    %col
+    %col
+    %col
+    %col
+    %thead
+      %tr
+        %th Title
+        %th Description
+        %th Created By
+        %th Submitted
+        %th Approval
+        %th Votes
+        %th Comments
+        %th
+    %tbody
+      - @research_topics.each do |rt|
+        %tr
+          %td= link_to rt.name, rt
+          %td= rt.description
+          %td
+            = link_to rt.user.name, admin_user_path(rt.user.id)
+            = surround '(', ')' do
+              = link_to rt.user.forum_name, member_path(rt.user.forum_name)
+          %td= time_ago_in_words(rt.created_at)
+          %td= rt.total_rating.to_s+'%' if rt.votes.present?
+          %td= rt.votes.count
+          %td= rt.comments.count
+          %td
+            - if rt.progress == 'under_review'
+              = link_to 'Approve', research_topic_path(id: rt, research_topic: { progress: 'approved' }), method: :patch, class: 'btn btn-success btn-sm'
+              = link_to 'Deny', research_topic_path(id: rt, progress: 'hidden'), method: :patch, class: 'btn btn-danger btn-sm'
+            - elsif rt.progress == 'approved'
+              = link_to 'Delete', research_topic_path(id: rt, progress: 'hidden'), method: :patch, class: 'btn btn-danger btn-sm'

@@ -23,6 +23,12 @@ class AdminControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should get research topics" do
+    login(@admin)
+    get :research_topics
+    assert_response :success
+  end
+
   test "should not get any pages as regular user" do
     login(users(:regular))
     get :dashboard
@@ -30,6 +36,8 @@ class AdminControllerTest < ActionController::TestCase
     get :users
     assert_response :redirect
     get :user_detail, id: @admin
+    assert_response :redirect
+    get :research_topics
     assert_response :redirect
   end
 end

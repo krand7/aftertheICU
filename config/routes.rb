@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get '/', action: :dashboard
     get :users
     get '/users/:id', action: :user_detail, as: 'user'
+    get :research_topics
     resources :team_members
     resources :partners
     resources :highlights

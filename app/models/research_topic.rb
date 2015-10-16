@@ -1,6 +1,6 @@
 class ResearchTopic < ActiveRecord::Base
-  # Model attributes
-  STATUS = [['Approved', 'approved'], ['Pending Review', 'pending_review'], ['Marked as Spam', 'spam'], ['Hidden', 'hidden']]
+  # Model attributes}
+  STATUS = [['Approved', 'approved'], ['Pending Review', 'under_review'], ['Marked as Spam', 'spam'], ['Hidden', 'hidden']]
 
   # Concerns
   include Deletable

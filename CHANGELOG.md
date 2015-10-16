@@ -9,12 +9,15 @@
 - Functional survey builder created
 - Functional survey completion added
 - Added admin dashboard
-  - User list with user details
-  - Ability to create team members for static page
-  - Ability to create partners for static page
-  - Ability to create consent forms and privacy policy
-  - Ability to create dashboard highlights
-  - Ability to create static learn pages
+  - Access indeces of resources
+    - User list with user details
+    - Research topics with one-click approval process
+  - Ability to customize static pages
+    - Ability to create team members
+    - Ability to create partners
+    - Ability to create consent forms and privacy policy
+    - Ability to create dashboard highlights
+    - Ability to create learn pages
 - Initial user interface established
 
 **Gems**
