@@ -23,15 +23,26 @@
     border-radius: 5px;
     background-color: #fff;
     .post-header {
+      position: relative;
       background-color: #fcfcfc;
       border-bottom: 1px solid #f0f0f0;
-      border-radius: 5px 5px 0 0;
+      border-radius: 3px 3px 0 0;
       min-height: 55px;
       padding: 10px;
       .poster-details {
+        font-weight: 400;
       }
       .post-time {
         margin-top: 5px;
+      }
+      .post-moderation {
+        position: absolute;
+        top: 0;
+        right:0;
+        border-radius: 0px 3px 3px 0;
+        background-color: $secondary;
+        padding: 0 2.5px;
+        a { margin: 5px 2.5px; }
       }
     }
     .post-content {

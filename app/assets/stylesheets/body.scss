@@ -1,11 +1,14 @@
 $footer-width: 80px;
+$background-color: white;
 html {
   position: relative;
   min-height: 100%;
+  background-color: $background-color;
 }
 body {
   /* Margin bottom by footer height */
   margin-bottom: $footer-width;
+  background-color: $background-color;
 }
 .footer {
   position: absolute;

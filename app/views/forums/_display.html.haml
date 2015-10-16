@@ -1,18 +1,24 @@
 %table.table.table-striped
+  %col{ width: "30px" }
   %col
+  %col{ width: "70px" }
   %col{ width: "70px" }
   %col{ width: "150px" }
   %col{ width: "220px" }
   %thead
     %tr
+      %th
       %th Topic
+      %th Views
       %th Posts
       %th Last Post By
       %th Time
   %tbody
     - forum.topics.limit(topic_limit).each do |topic|
       %tr
+        %td= link_to image_tag(topic.user.photo_url, width: 30), member_path(topic.user.forum_name)
         %td= link_to "#{topic.name}", [forum, topic], class: 'default'
+        %td= topic.views_count
         %td= topic.posts.count
-        %td= topic.posts.last.user.forum_name if topic.posts.present? and topic.posts.last.user.present?
+        %td= link_to topic.posts.last.user.forum_name, member_path(topic.posts.last.user.forum_name) if topic.posts.present?
         %td= topic.posts.last.created_at.strftime("%-d %B %Y, %-l:%M %p") if topic.posts.present?

@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
   has_many :answer_options, -> { where deleted: false }
 
   # Model Validation
-  validates_presence_of :first_name, :last_name
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :forum_name, allow_blank: false, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/i }
 
   # User Methods
