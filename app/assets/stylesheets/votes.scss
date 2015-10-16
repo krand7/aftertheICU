@@ -10,9 +10,44 @@
 }
 
 .vote-status-endorsed {
-  color: #78C679;
+  color: $green;
 }
 
 .vote-status-opposed {
-  color: #E54835;
+  color: $red;
+}
+
+.vote-btn-container {
+  input[type="radio"] {
+    display: none;
+  }
+  label {
+    display:inline-block;
+    border: 2px solid black;
+    border-radius: 2px;
+    padding:5px;
+    width: 100px;
+    text-align: center;
+  }
+  input[type="radio"]:checked + label {
+    color: white;
+  }
+}
+
+.vote-btn-container-endorse {
+  label {
+    border-color: $green;
+  }
+  input[type="radio"]:checked + label {
+    background-color: $green;
+  }
+}
+
+.vote-btn-container-oppose {
+  label {
+    border-color: $red;
+  }
+  input[type="radio"]:checked + label {
+    background-color: $red;
+  }
 }

@@ -27,27 +27,26 @@
             %ul
               - @vote.errors.full_messages.each do |message|
                 %li= message
-        .form-group
-          = radio_button_tag "endorse", 1, @research_topic.endorsed_by_user?(current_user)
-          %label.endorse-label{ for: "endorse_#{@research_topic.id}_1" } Agree
-        .form-group
-          = radio_button_tag "endorse", 0, @research_topic.opposed_by_user?(current_user)
-          %label.endorse-label{ for: "endorse_#{@research_topic.id}_0" } Disagree
-        .form-group
-          = label_tag :comment, nil, class: 'control-label'
-          = text_area_tag :comment, nil, class: 'form-control'
-        .form-group
-          = f.hidden_field :research_topic_id, value: @research_topic.id
-          = f.submit
+        .row
+          .col-xs-4.col-sm-2.col-sm-offset-2
+            .pull-right
+              .form-group.vote-btn-container.vote-btn-container-endorse
+                = radio_button_tag "endorse", 1, @research_topic.endorsed_by_user?(current_user)
+                %label.endorse-label{ for: "endorse_1" } Agree
+              .form-group.vote-btn-container.vote-btn-container-oppose
+                = radio_button_tag "endorse", 0, @research_topic.opposed_by_user?(current_user)
+                %label.endorse-label{ for: "endorse_0" } Disagree
+          .col-xs-8.col-sm-6
+            .form-group
+              = text_area_tag :comment, nil, rows: 4, placeholder: 'Add an optional comment...', class: 'form-control'
+            .form-group
+              = f.hidden_field :research_topic_id, value: @research_topic.id
+              = f.submit 'Cast Vote', class: 'btn btn-primary'
     - else
       -# Research topic approval
       - if @research_topic.votes.count > 0
         .row
-          .col-sm-7
-            %br
-            - @research_topic.comments.each do |comment|
-              = render comment
-          .col-sm-5
+          .col-sm-5.col-sm-push-7
             %h3
               Endorsement:
               %span.f300
@@ -63,3 +62,7 @@
               - else
                 %span.vote-status-opposed disagreed
               that this is a research priority.
+          .col-sm-7.col-sm-pull-5
+            %br
+            - @research_topic.comments.each do |comment|
+              = render comment
