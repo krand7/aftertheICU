@@ -2,6 +2,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// Variables
 @import "colors";
 @import "alignment";
 @import "bs-callout";
@@ -10,11 +11,12 @@
 @import "forms";
 @import "links";
 
-@import "navbar";
+// Layout
 @import "body";
 @import "scroll";
 @import "content";
 
+// Features
 @import "account";
 @import "posts";
 @import "research_topics";
@@ -23,8 +25,12 @@
 @import "surveys";
 @import "progress";
 
+// Admin
 @import "admin";
 @import "admin/team_members";
 @import "admin/partners";
 @import "admin/consent_forms";
 @import "admin/highlights";
+
+// Members
+@import "members";

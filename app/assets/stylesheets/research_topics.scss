@@ -3,9 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .research-topic-container {
-  box-shadow: 1px 1px 3px 2px #999;
-  padding: 10px;
+  background-color: $white;
   border-radius: 2px;
+  margin-bottom: 20px;
+  padding: 10px;
 }
 
 // Progress meter

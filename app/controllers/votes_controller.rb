@@ -11,7 +11,7 @@ class VotesController < ApplicationController
     respond_to do |format|
       if @vote.save
         @research_topic.add_comment(current_user, params[:comment]) if params[:comment].present?
-        format.html { redirect_to research_topic_path(@research_topic), notice: 'Vote was successfully created.' }
+        format.html { redirect_to research_topic_path(@research_topic), notice: 'Thank you for your input!' }
       else
         format.html { render research_topic_path(@research_topic), notice: 'There was an error casting your vote.' }
         format.json { render json: @vote.errors, status: :unprocessable_entity }

@@ -1,4 +1,9 @@
-.footer-link= link_to 'Team', team_path
-.footer-link= link_to 'Partners', partners_path
-- if Admin::ConsentForm.where(name: 'privacy_policy').present?
-  .footer-link= link_to 'Privacy Policy', privacy_policy_path
+.row
+  .col-sm-4
+    .footer-header AFTER THE ICU
+    .footer-link= link_to 'Team', team_path
+    .footer-link= link_to 'Partners', partners_path
+    - if Admin::ConsentForm.where(name: 'privacy_policy').present?
+      .footer-link= link_to 'Privacy Policy', privacy_policy_path
+  .col-sm-4
+  .col-sm-4

@@ -4,6 +4,7 @@
 
 .container
   - @content_groups.each do |content_group|
-    .content-container
-      - content_group.content_pages.each do |content_page|
-        = render 'learn/content_page_thumbnail', content_page: content_page
+    - content_group.content_pages.each do |content_page|
+      = render 'learn/content_page_thumbnail', content_page: content_page
+    - unless content_group == @content_groups.last
+      %hr

@@ -2,29 +2,14 @@
   .container
     %h1 Research
 
-.container.content-container
+.container
   .row
     .col-sm-7
-      %p.lead Let us know which research topics matter most to you, and propose your own.
-    .col-sm-4.col-sm-offset-1
-      .righted= link_to 'Propose a new research topic', new_research_topic_path, class: 'btn btn-primary btn-lg'
-  %br
-  .list-group
-    - @research_topics.newest.each do |research_topic|
-      .row
-        .col-sm-7.list-group-item
-          = link_to research_topic_path(research_topic) do
-            %p.lead.f400= research_topic.name
-          .pull-left
-            %span.small= research_topic.created_at.strftime("%d %B %Y, %-l:%M %p")
-          .pull-right
-            -#%span{ style: 'line-height: 15px; '}
-              -#= image_tag 'speech_bubble.png', width: 15, height: 15
-              -#= research_topic.comments.count
-            - research_topic.comments.first(3).each do |comment|
-              = link_to member_path(comment.user.forum_name) do
-                = image_tag comment.user.photo_url, class: 'commenter-thumbnail'
-            - if research_topic.comments.count > 3
-              %span.gray.small= " and #{pluralize(research_topic.comments.count - 3,  'others')}"
-          .clearfix
+      .content-container
+        %p.lead Let us know which research topics matter most to you, and propose your own.
+        = link_to 'Propose a new research topic', new_research_topic_path, class: 'btn btn-danger btn-lg'
+
+
+      - @research_topics.newest.each do |rt|
+        = render rt
 

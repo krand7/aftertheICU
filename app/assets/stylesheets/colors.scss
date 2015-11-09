@@ -1,12 +1,27 @@
 // Theme
-$primary: #39C1C7;
-$secondary: #D35270;
+$primary: #39c1c7;
+$secondary: #d35270;
 
 // Common
-$green: #78C679;
-$red: #E54835;
-$orange: #FFBB52;
+$green: #78c679;
+$red: #e54835;
+$orange: #ffbb52;
 
+// Grayscale
+$white: #fff;
+$lightest-gray: #efefef;
+$lighter-gray: #ddd;
+$light-gray: #bbb;
+$dark-gray: #777;
+$darker-gray: #333;
+$darkest-gray: #101010;
+$black: #000;
+
+// Elements
+$content-footer-divider: #bbb;
+$border-color: #c5c5c5;
+
+// CLASSES
 .primary { color: $primary; }
 .primary-bcg { background-color: $primary; }
 .secondary { color: $secondary; }

@@ -1,21 +1,14 @@
-.content-header
-  .container
-    %h1 Research Proposal
-    %p= link_to 'Back', research_topics_path
-%br
 .container
   .research-topic-container
     %h4
-      = link_to member_path(@research_topic.user.forum_name) do
-        = image_tag @research_topic.user.photo_url, width: 50
-        = @research_topic.user.forum_name
+      = render 'members/member_photo_name', member: @research_topic.user
       asked:
     %hr
     .inset
       %p.lead.f400= @research_topic.name
       %p.lead= @research_topic.description
-%br
-.container
+
+
   - if current_user
     - unless @research_topic.voted_by_user?(current_user)
       = form_for([@research_topic, @vote]) do |f|
@@ -41,13 +34,12 @@
               = text_area_tag :comment, nil, rows: 4, placeholder: 'Add an optional comment...', class: 'form-control'
             .form-group
               = f.hidden_field :research_topic_id, value: @research_topic.id
-              = f.submit 'Cast Vote', class: 'btn btn-primary'
+              = f.submit 'Cast Vote', class: 'btn btn-default'
     - else
-      -# Research topic approval
       - if @research_topic.votes.count > 0
         .row
           .col-sm-5.col-sm-push-7
-            %h3
+            %h3.white
               Endorsement:
               %span.f300
                 = "#{@research_topic.total_rating.round}%"
@@ -66,3 +58,6 @@
             %br
             - @research_topic.comments.each do |comment|
               = render comment
+
+- unless current_user
+  = render 'members/join_callout'

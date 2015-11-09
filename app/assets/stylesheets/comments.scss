@@ -6,17 +6,20 @@ $comment-img-spec: 50px;
 $comment-content-offset: $comment-img-spec + 10px;
 
 .comment-container {
-  border: 1px solid #ccc;
+  border: 1px solid $border-color;
+  background-color: $white;
   min-height: $comment-img-spec;
   position: relative;
+
   .comment-img {
-    width: $comment-img-spec;
+    background-color: $white;
     height: 100%;
-    background-color: #f3f3f3;
+    left: 0;
     position: absolute;
-    top:0px;
-    left:0px;
+    top: 0;
+    width: $comment-img-spec;
   }
+
   .comment-content {
     margin-left: $comment-content-offset;
     padding-top: 5px;
@@ -24,8 +27,8 @@ $comment-content-offset: $comment-img-spec + 10px;
 }
 
 .commenter-thumbnail {
-  width: 20px;
-  height: 20px;
+  box-shadow: 0 0 2px 1px #eee;
   border-radius: 10px;
-  box-shadow: 0px 0px 2px 1px #eee;
+  height: 20px;
+  width: 20px;
 }

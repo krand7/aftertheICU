@@ -1,0 +1,11 @@
+.research-topic-container
+  %p.lead= link_to research_topic.name, research_topic_path(research_topic)
+  .pull-left
+    %span.small= research_topic.created_at.strftime("%d %B %Y, %-l:%M %p")
+  .pull-right
+    - research_topic.comments.first(3).each do |comment|
+      = link_to member_path(comment.user.forum_name) do
+        = image_tag comment.user.photo_url, class: 'commenter-thumbnail'
+    - if research_topic.comments.count > 3
+      %span.gray.small= " and #{pluralize(research_topic.comments.count - 3,  'others')}"
+  .clearfix
