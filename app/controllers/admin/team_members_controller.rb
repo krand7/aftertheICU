@@ -1,7 +1,7 @@
 class Admin::TeamMembersController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin!
-  before_action :set_team_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_team_member, only: [:edit, :update, :destroy]
 
   # GET /admin/team_members
   # GET /admin/team_members.json
@@ -26,7 +26,7 @@ class Admin::TeamMembersController < ApplicationController
     respond_to do |format|
       if @team_member.save
         format.html { redirect_to admin_team_members_path, notice: 'Team member was successfully created.' }
-        format.json { render :show, status: :created, location: @admin_team_member }
+        format.json { render :index, status: :created, location: @admin_team_member }
       else
         format.html { render :new }
         format.json { render json: @team_member.errors, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class Admin::TeamMembersController < ApplicationController
     respond_to do |format|
       if @team_member.update(team_member_params)
         format.html { redirect_to admin_team_members_path, notice: 'Team member was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin_team_member }
+        format.json { render :index, status: :ok, location: @admin_team_member }
       else
         format.html { render :edit }
         format.json { render json: @team_member.errors, status: :unprocessable_entity }

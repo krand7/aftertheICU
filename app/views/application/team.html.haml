@@ -3,5 +3,7 @@
     %h1 Our Team
 
 .container
-  .content-container
-    = render @team_members
+  .row
+    - @team_members.each do |tm|
+      .col-sm-4
+        = render tm

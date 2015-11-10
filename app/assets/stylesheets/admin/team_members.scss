@@ -3,7 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .team-member-container {
+  background-color: $white;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  padding: 10px;
   position: relative;
+
   .team-member-img {
     width: 250px;
     height: 250px;

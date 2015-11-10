@@ -1,6 +1,8 @@
 .content-header
   .container
     %h1 Forums
+    - if current_user and current_user.admin?
+      = link_to 'New Forum', new_forum_path, class: 'btn btn-danger'
 
 .container
   - @forums.each do |forum|
@@ -9,5 +11,3 @@
       = render 'forums/display', forum: forum, topic_limit: 10
       - if current_user
         = link_to 'Add a new topic', new_forum_topic_path(forum), class: 'btn btn-primary btn-sm'
-  - if current_user and current_user.admin?
-    = link_to 'New Forum', new_forum_path, class: 'btn btn-primary'

@@ -2,10 +2,11 @@
   .container
     %h1 Team Members
     %p= link_to 'Back to Admin Dashboard', admin_path
+    = link_to 'New Team Member', new_admin_team_member_path, class: 'btn btn-danger'
 
 .container
-  .content-container
-    .row
-      = render @team_members
-    %br
-    = link_to 'New Team Member', new_admin_team_member_path, class: 'btn btn-primary'
+  .row
+    - @team_members.each do |tm|
+      .col-sm-4
+        = render tm
+

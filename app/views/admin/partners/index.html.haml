@@ -2,9 +2,7 @@
   .container
     %h1 Partners
     %p= link_to 'Back to Admin Dashboard', admin_path
+    = link_to 'New Partner', new_admin_partner_path, class: 'btn btn-danger'
 
 .container
-  .content-container
-    = render @partners
-    %br
-    = link_to 'New Partner', new_admin_partner_path, class: 'btn btn-primary'
+  = render @partners
