@@ -61,7 +61,7 @@
         .tab-content
           #write-new.tab-pane.active
             = f.text_area :description, rows: 7, class: 'form-control'
-          #preview-new.tab-pane{ style: 'min-height:177px;' }
+          #preview-new.tab-pane{ style: 'min-height:154px;' }
             #preview-new.post-container
+        = f.submit "Comment", class: 'btn btn-danger btn-lg btn-block', data: { disable_with: "Posting comment..." }
         %br
-        = f.submit "Comment", class: 'btn btn-primary', data: { disable_with: "Posting comment..." }

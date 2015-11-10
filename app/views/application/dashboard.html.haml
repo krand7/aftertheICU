@@ -3,13 +3,8 @@
     %h1= "Welcome, #{current_user.first_name}"
 
 .container
-  .content-container
-    .row
-      - @highlights.each do |highlight|
-        .col-md-4
-          = render highlight
-    %br
-    %h2.f400 Recent Activity
-    %ul.list-group
-      - Post.most_recent.first(10).each do |post|
-        %li.list-group-item= post.description
+  .row
+    - @highlights.each do |highlight|
+      .col-md-4
+        = render highlight
+

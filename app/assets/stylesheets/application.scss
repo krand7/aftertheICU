@@ -16,15 +16,6 @@
 @import "scroll";
 @import "content";
 
-// Features
-@import "account";
-@import "posts";
-@import "research_topics";
-@import "comments";
-@import "votes";
-@import "surveys";
-@import "progress";
-
 // Admin
 @import "admin";
 @import "admin/team_members";
@@ -33,7 +24,21 @@
 @import "admin/highlights";
 
 // Members
+@import "account";
 @import "members";
 
 // Learn content
 @import "admin/content_pages";
+
+// Forums
+@import "topics";
+@import "posts";
+
+// Research Topics
+@import "research_topics";
+@import "comments";
+@import "votes";
+
+// Surveys
+@import "surveys";
+@import "progress";
