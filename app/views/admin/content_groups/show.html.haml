@@ -1,8 +1,10 @@
 .content-header
   .container
     %h1= @content_group.title
-    %p= link_to 'Edit', edit_admin_content_group_path(@content_group)
-    %p= link_to 'Back', admin_content_groups_path
+    %p.white
+      = link_to 'Edit', edit_admin_content_group_path(@content_group)
+      |
+      = link_to 'Back', admin_content_groups_path
 
 .container
   .content-container

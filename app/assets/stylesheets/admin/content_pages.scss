@@ -1,3 +1,25 @@
-// Place all the styles related to the admin/content_pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.content-page-thumbnail {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+
+  .preview-image {
+    width: 200px;
+  }
+
+  .title-overlay {
+    background-color: rgba(0, 0, 0, .7);
+    bottom: 0;
+    color: $white;
+    left: 0;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+  }
+
+  &:hover {
+    .title-overlay {
+      color: $primary;
+    }
+  }
+}

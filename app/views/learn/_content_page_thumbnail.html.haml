@@ -1,1 +1,7 @@
-= link_to content_page.title, learn_page_path(content_page.slug)
+- link_path = admin_view ? admin_content_group_content_page_path(content_page.content_group, content_page) : learn_page_path(content_page.slug)
+.content-page-thumbnail
+  = link_to link_path do
+    .preview-image
+      = image_tag content_page.photo
+    .title-overlay
+      = content_page.title

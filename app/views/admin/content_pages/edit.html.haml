@@ -1,8 +1,10 @@
 .content-header
   .container
     %h1 Editing Page
-    %p= link_to 'Show', admin_content_group_content_page_path(@content_group, @content_page)
-    %p= link_to 'Back', admin_content_group_content_pages_path(@content_group)
+    %p.white
+      = link_to 'Show', admin_content_group_content_page_path(@content_group, @content_page)
+      |
+      = link_to 'Back', admin_content_group_content_pages_path(@content_group)
 
 .container
   .content-container

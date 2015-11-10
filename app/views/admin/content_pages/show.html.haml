@@ -1,4 +1,8 @@
 = render @content_page
 %hr
-= link_to 'Edit', edit_admin_content_group_content_page_path(@content_group, @content_page)
-= link_to 'Back', admin_content_group_content_pages_path(@content_group)
+.content-header
+  .container
+    %p.white
+      = link_to 'Edit', edit_admin_content_group_content_page_path(@content_group, @content_page)
+      |
+      = link_to 'Back', admin_content_group_content_pages_path(@content_group)

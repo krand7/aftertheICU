@@ -1,14 +1,22 @@
 .content-header
   .container
     %h1 Content Groups
-    %p= link_to 'Back to Admin Dashboard', admin_path
+    %p.white
+      = link_to 'Back to admin dashboard', admin_path
+      |
+      = link_to 'New content group', new_admin_content_group_path
 
 .container
-  .content-container
-    - @content_groups.each do |content_group|
+  - @content_groups.each do |content_group|
+    .content-container
+      %h3
+        = content_group.title
       %p
-      = content_group.title
-      = link_to content_group.slug, content_group
-    %br
-    %br
-    = link_to 'New Content group', new_admin_content_group_path, class: 'btn btn-primary'
+        = content_group.description
+      %p
+        = link_to 'Edit group', edit_admin_content_group_path(content_group)
+      %hr
+      - content_group.content_pages.each do |content_page|
+        = render 'learn/content_page_thumbnail', content_page: content_page, admin_view: true
+
+%br

@@ -29,14 +29,15 @@
     = f.label :content_group_id, nil, class: 'control-label col-md-2'
     .col-md-10
       = f.select :content_group_id, Admin::ContentGroup.current.pluck(:title, :id), {}, class: 'form-control'
+  %hr
   .form-group
-    %hr
-    .row
-      .col-md-6
-        %p.f500 Content
-        = f.text_area :content, rows: 30, class: 'form-control', data: { object: 'page-content-input', groupid: @content_group.id, pageid: "#{@content_page.new_record? ? 'new' : @content_page.id}" }
-      .col-md-6
-        %p.f500 Preview
-        #content-page-preview
+    .col-md-6
+      %p.f500 Content
+      = f.text_area :content, rows: 30, class: 'form-control', data: { object: 'page-content-input', groupid: @content_group.id, pageid: "#{@content_page.new_record? ? 'new' : @content_page.id}" }
+    .col-md-6
+      %p.f500 Preview
+      #content-page-preview
+    .clearfix
   .form-group
-    = f.submit "#{@content_page.new_record? ? 'Create' : 'Save'} Page", class: 'btn btn-primary'
+    .col-xs-12
+      = f.submit "#{@content_page.new_record? ? 'Create' : 'Save'} Page", class: 'btn btn-primary btn-block'

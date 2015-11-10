@@ -5,6 +5,8 @@
 .container
   - @content_groups.each do |content_group|
     - content_group.content_pages.each do |content_page|
-      = render 'learn/content_page_thumbnail', content_page: content_page
+      = render 'learn/content_page_thumbnail', content_page: content_page, admin_view: false
     - unless content_group == @content_groups.last
       %hr
+
+%br
