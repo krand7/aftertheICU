@@ -16,4 +16,7 @@ class AdminController < ApplicationController
   def research_topics
     @research_topics = ResearchTopic.current.order(progress: :desc, created_at: :desc)
   end
+
+  def social_media_content
+  end
 end

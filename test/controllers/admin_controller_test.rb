@@ -29,6 +29,12 @@ class AdminControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should get social media" do
+    login(@admin)
+    get :social_media_content
+    assert_response :success
+  end
+
   test "should not get any pages as regular user" do
     login(users(:regular))
     get :dashboard
@@ -38,6 +44,8 @@ class AdminControllerTest < ActionController::TestCase
     get :user_detail, id: @admin
     assert_response :redirect
     get :research_topics
+    assert_response :redirect
+    get :social_media_content
     assert_response :redirect
   end
 end

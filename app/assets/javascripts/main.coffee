@@ -6,6 +6,7 @@
 @loaders = () ->
   mainLoader()
   researchTopicsReady() if $("[data-object~='research-topic-meter']").length > 0
+  socialMediaReady() if $('#socialMediaCanvas').length > 0
 
 $(document).ready(loaders)
 $(document)

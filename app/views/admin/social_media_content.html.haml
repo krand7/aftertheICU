@@ -1,0 +1,18 @@
+- content_for :title, 'Social Media Content'
+- content_for :description, 'Simple tools to help make social media content specifically for After The ICU'
+
+.content-header
+  .container
+    %h1 Custom Social Media Content
+
+.container
+  .content-container.centered
+    = text_area_tag :social_media_text, 'This is example text', rows: 4, class: 'form-control'
+    - 3.times do
+      %br
+    %canvas.social-media-canvas#socialMediaCanvas{ height: '800', width: '800'}
+      Your browser does not support the HTML5 canvas tag.
+    - 3.times do
+      %br
+
+= image_tag 'social_media_logo_300', class: 'hidden', id: 'logo'

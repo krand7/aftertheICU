@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/', action: :dashboard
+    get '/social-media', action: :social_media_content
     get :users
     get '/users/:id', action: :user_detail, as: 'user'
     get :research_topics
