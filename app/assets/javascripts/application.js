@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require main
 //= require posts
+//= require google_analytics
 //= require_tree .
