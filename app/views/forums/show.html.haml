@@ -1,3 +1,6 @@
+- content_for :title, @forum.name + ' Forum'
+- content_for :description, @forum.description
+
 .content-header
   .container
     %h1= @forum.name

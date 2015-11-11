@@ -1,3 +1,6 @@
+- content_for :title, @topic.name
+- content_for :description, @topic.posts.present? ? @topic.posts.first.description.truncate(155) : @topic.name
+
 .content-header
   .container
     %h1= @topic.name

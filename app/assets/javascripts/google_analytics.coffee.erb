@@ -12,10 +12,8 @@
   m.parentNode.insertBefore a, m
   return
 ) window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga'
-<% if Rails.env.production? %>
-  ga 'create', 'UA-43015995-4', 'auto'
-  ga 'send', 'pageview'
-<% end %>
+ga 'create', "<%= ENV['google_analytics_id'] %>", 'auto'
+ga 'send', 'pageview'
 
 $(document).ready ->
   if typeof Turbolinks is 'undefined' or !Turbolinks.supported

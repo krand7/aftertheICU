@@ -76,7 +76,7 @@ Rails.application.routes.draw do
     get :privacy_policy
   end
 
-  devise_for :users, controllers: { registrations: 'registrations' }, path_names: { sign_up: 'join', sign_in: 'login', sign_out: 'logout' }, path: "/"
+  devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }, path_names: { sign_up: 'join', sign_in: 'login', sign_out: 'logout' }, path: "/"
 
   root to: 'application#welcome'
 

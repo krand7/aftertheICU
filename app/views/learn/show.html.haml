@@ -1,1 +1,4 @@
+- content_for :title, @content_page.title
+- content_for :description, @content_page.content.truncate(155)
+
 = render @content_page

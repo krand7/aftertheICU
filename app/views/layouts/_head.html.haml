@@ -1,0 +1,14 @@
+%title= content_for?(:title) ? 'AfterTheICU | ' + yield(:title) : 'AfterTheICU'
+%meta{ name: "description", content: "#{content_for?(:description) ? yield(:description) : 'Intensive Care Unit Community'}"}
+%meta{ charset: 'utf-8'}
+%meta{ content: 'IE=Edge,chrome=1', http: { equiv: 'X-UA-Compatible' } }
+%meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+
+%meta{ property: 'og:url', content: ENV['website_url'] }
+%meta{ property: 'og:title', content: ENV['website_title'] }
+%meta{ property: 'og:description', content: "#{content_for?(:description) ? yield(:description) : 'Intensive Care Unit Community'}" }
+%meta{ property: 'og:image', content: ENV['website_url'] + '/assets/' + asset_path('aftertheicu_logo1.png').split('/assets/').last }
+
+%meta{ itemprop: 'name', content: ENV['website_url'] }
+%meta{ itemprop: 'description', content: ENV['website_title'] }
+%meta{ itemprop: 'image', content: ENV['website_url'] + '/assets/' + asset_path('aftertheicu_logo1.png').split('/assets/').last }

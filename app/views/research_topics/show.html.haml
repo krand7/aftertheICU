@@ -1,3 +1,6 @@
+- content_for :title, @research_topic.name
+- content_for :description, @research_topic.description.truncate(155)
+
 .container
   .research-topic-container
     %h4
